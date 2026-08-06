@@ -1,0 +1,1574 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head>
+<meta name="DC.Title" content="UBND Tỉnh Sơn La" id="DC.Title">
+<meta name="DC.Creator" content="UBND Tỉnh Sơn La" id="DC.Creator">
+<meta name="DC.Date" scheme="W3CDTF" content="2018-10-19T10-15-08" id="DC.Date">
+<meta name="DC.Publisher" content="UBND Tỉnh Sơn La" id="DC.Publisher">
+<meta name="DC.Description" content="UBND Tỉnh Sơn La" id="DC.Description">
+<meta name="DC.Identifier" content="congbao.sonla.gov.vn" id="DC.Identifier">
+<link rel="icon" href="/congbao.nsf/quochuy.png" type="image/x-icon">
+<link type="text/css" rel="stylesheet" href="/congbao.nsf/global.css">
+<link type="text/css" rel="stylesheet" href="/congbao.nsf/hcmcity/style.css">
+<link type="text/css" rel="stylesheet" href="/congbao.nsf/app.css">
+<!--[if lte IE 9]><link type='text/css' rel='stylesheet' href='/congbao.nsf/ie9leq-app.css'/><![endif]-->
+<link type="text/css" rel="stylesheet" href="/congbao.nsf/jquery-ui-1.10.3/css/blitzer/jquery-ui-1.10.3.custom.css">
+<script src="//e.dtscout.com/e/?v=1a&amp;pid=5200&amp;site=1&amp;l=https%3A%2F%2Fcongbao.sonla.gov.vn%2Fcongbao.nsf%2FDanhMucVB&amp;j=" async="" type="text/javascript"></script><script type="text/javascript" src="/congbao.nsf/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/congbao.nsf/jquery.cookie.js"></script>
+<script type="text/javascript" src="/congbao.nsf/jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="/congbao.nsf/jquery.fancybox-1.3.3/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="/congbao.nsf/jquery.fancybox-1.3.3/jquery.easing-1.3.pack.js"></script>
+<script type="text/javascript" src="/congbao.nsf/jquery.fancybox-1.3.3/jquery.fancybox-1.3.3.pack.js"></script>
+<link type="text/css" rel="stylesheet" href="/congbao.nsf/jquery.fancybox-1.3.3/jquery.fancybox-1.3.3.css" media="screen"><link rel="stylesheet" href="/congbao.nsf/nivo-slider/themes/default/default.css" type="text/css" media="screen"><link rel="stylesheet" href="/congbao.nsf/nivo-slider/nivo-slider.css" type="text/css" media="screen"><script type="text/javascript" src="/congbao.nsf/nivo-slider/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="/congbao.nsf/jquery.ui.datepicker-vi.js"></script>
+<script type="text/javascript" src="/congbao.nsf/jquery.json-2.4.min.js"></script>
+<script type="text/javascript" src="/congbao.nsf/jquery.printElement.js"></script>
+<script type="text/javascript" src="/congbao.nsf/linq.js"></script>
+<!--script type='text/javascript' src='/congbao.nsf/ddaccordion.js'></script-->
+<script type="text/javascript" src="/congbao.nsf/global.js"></script>
+<script type="text/javascript" src="/congbao.nsf/String.prototype.js"></script>
+<script type="text/javascript" src="/congbao.nsf/jquery.mvalidate.js"></script>
+<script type="text/javascript" src="/congbao.nsf/jquery.mNavExpander.js"></script>
+<script type="text/javascript" src="/congbao.nsf/mitj.js"></script>
+<script type="text/javascript" src="/congbao.nsf/ajax.js"></script>
+<title>Danh mục văn bản đăng công báo</title>
+<script language="JavaScript" type="text/javascript">
+<!-- 
+document._domino_target = "_self";
+function _doClick(v, o, t, h) {
+  var form = document._DanhMucVB;
+  if (form.onsubmit) {
+     var retVal = form.onsubmit();
+     if (typeof retVal == "boolean" && retVal == false)
+       return false;
+  }
+  var target = document._domino_target;
+  if (o.href != null) {
+    if (o.target != null)
+       target = o.target;
+  } else {
+    if (t != null)
+      target = t;
+  }
+  form.target = target;
+  form.__Click.value = v;
+  if (h != null)
+    form.action += h;
+  form.submit();
+  return false;
+}
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+$(function(){
+	$('#slider').nivoSlider({
+			controlNav: false, 
+			directionNav: false,
+			onInit: function(){
+
+			}
+	});
+	$('.imgremove').each(function(){
+		$(this).remove();
+	});
+	$('a[tab]').click(function(){
+		$.cookie('tab', $(this).attr('tab'));
+	});
+	$('a[tab="'+$.cookie('tab')+'"]').addClass('active');
+	$('#now').text(getFullVNDate());
+	//code plugin loi, tu vai chay
+	var o = {
+		itemSelector	: 'td a',
+		noItems		: 10,
+		showLess		: '',
+		showLessClass	: 'collapse',
+		showMore		: '',
+		showMoreClass	: 'expand',
+		defaultState	: 'collapse',
+		callback		: function(){}
+	};
+	$('.cb-table-menu-group').each(function(){
+		var expander = $(this);
+		var $items = expander.find(o.itemSelector);
+		if($items.length <= o.noItems)
+			return;
+		var $toggler = $('<a>');
+		if(o.defaultState == 'collapse')
+			$toggler.addClass(o.showMoreClass).addClass('toggler').text(o.showMore);
+		else
+			$toggler.addClass(o.showLessClass).addClass('toggler').text(o.showLess);
+		var lastVisibleIndex = (o.noItems-1);
+		$toggler.attr('vindex', lastVisibleIndex);
+		//var $lastVisibleItem = $items.filter(':eq(' + lastVisibleIndex + ')');
+		//alert(expander.find(o.itemSelector).length);
+		//alert($lastVisibleItem.nextAll().length);
+		var $invisibleItems = $items.filter(':gt('+lastVisibleIndex+')')
+		$invisibleItems.hide();
+		$items.last().after($toggler);
+		//$items = expander.find(o.itemSelector);
+		//alert(expander.find(o.itemSelector).length);
+		//alert($lastVisibleItem.nextAll().length);
+	});
+	$('.cb-table-menu-group').delegate('.toggler', 'click', function(){
+		var vindex = parseInt($(this).attr('vindex'));
+		$(this).siblings(':gt('+vindex+')').toggle();
+		$(this).toggleClass('expand');
+		$(this).toggleClass('collapse');
+	});
+	$('.welcome').hover(function(){
+		$(this).find('.user-pull-down').toggle();
+	}, function(){
+		$(this).find('.user-pull-down').toggle();
+	});
+});
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+/*$(function(){
+	var $Gopy = $('#idGopyScroll');
+	if($Gopy != null && $Gopy.attr('name') == 'idGopyScroll'){
+		$.ajax({
+			url: 'getGopY?OpenAgent',
+			dataType: 'html'
+		}).done(function(data) {
+			if(data.lastIndexOf('<result>') > -1){
+				data = data.substring(data.lastIndexOf('<result>') + 8, data.lastIndexOf('</result>'));
+			}
+			if(data != ''){
+				$('#idGopyScroll').html(data);
+			}
+		});
+	}
+})*/
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+$(function(){
+	var $floating = $('#floating-toc');
+	var t = ($floating.length>0) ? $floating.position().top : 0;
+	$(window).scroll(function(){
+		var t2s = $(window).scrollTop() - t;
+
+		if(t2s>0){
+			if($.browser.msie){
+				$floating.css({
+					'position'	: 'absolute',
+					'top'		: $(window).scrollTop()+'px'
+				});
+			}else{
+				$floating.css({
+					'position'	: 'fixed',
+					'top'		: '0px'
+				});
+			}
+		}else{
+			$floating.css({
+				'position'	: '',
+				'top'		: ''
+			});
+		}
+	});
+});
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+$(function(){
+
+	//tung 1
+	$.ajax({
+		url: '/'+$('#DB_Path').val() + '/getCountVBQPPL?OpenAgent',
+		dataType: 'html'
+	}).done(function(data) {
+		if(data.lastIndexOf('<result>') > -1){
+			data = data.substring(data.lastIndexOf('<result>') + 8, data.lastIndexOf('</result>'));
+		}
+		if(data != ''){
+			if(data == '0'){
+				if($('#law-docs-by-month') != null){
+					$('#law-docs-by-month').hide();
+				}
+			}
+		}
+	});
+	//tung 2
+
+	$('#law-docs-by-month a.gazette-month').click(function(){
+		var year = $(this).attr('year');
+		var $months = $(this).next('div.months');
+		if($months.attr('loaded')!==undefined)
+			$months.toggle();
+		else{
+			var slidePath = '';
+			if($('#slidePath') != null)
+				slidePath = $('#slidePath').val();
+			var URL = '/'+$('#DB_Path').val()+'/html?OpenPage&view=LawDocsByYearMonth&RestrictToCategory='+encodeURIComponent(year)+'&CollapseView';
+			if(slidePath.trim().toLowerCase() == 'sonla' | slidePath.trim().toLowerCase() == 'lamdong')
+				URL = '/'+$('#DB_Path').val()+'/html?OpenPage&view=LawDocsByYearMonth2&RestrictToCategory='+encodeURIComponent(year)+'&CollapseView';
+			//console.log(URL)
+			$.ajax({
+				url		: URL,
+				async	: false,
+				contentType: "application/x-www-form-urlencoded;charset=utf-8",
+				success	: function(html){
+					$months.append(html);
+					$months.attr('loaded', '');
+					$months.slideToggle();
+				}
+			});
+		}
+	});
+	if(window.location.href.toLowerCase().indexOf('vbqppltheothang')>-1){
+		var cate = $('#cate').val();
+		var year = cate.substring(0, cate.indexOf('/')), month = cate.substring(cate.indexOf('/')+1);
+		var $navBlock = $('#law-docs-by-month');
+		activateMonth(month, year, $navBlock);
+	}
+});
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+$(function(){
+	var $nav = $('#issues-by-level');
+	if($nav.length==0)
+		return;
+	//var jsonUrl = '/'+$('#DB_Path').val()+'/json?openPage&view=IssuesByLevel';
+	var jsonUrl = '/'+$('#DB_Path').val()+'/IssuesByLevel_New?openview&count=-1';
+	$.ajax({
+		url		: jsonUrl,
+		error: function(jqXHR, exception) {
+			mitj.catchAjaxError(jqXHR, exception);
+			$('#issues-by-level').prev('.loading').hide();
+        	},
+		success	: function(jsonStr){
+			var json = JSON.parse(jsonStr);
+			var query = Enumerable.From(json);
+			levelQuery = query.Where(function(x){return x.levelName!=null;});
+			var levelArray = levelQuery.ToArray();
+			
+			var slidePath = '';
+			if($('#slidePath') != null)
+				slidePath = $('#slidePath').val();
+			
+			for(var i=0; i<levelArray.length; i++){			
+				var $node = $('<li class="node">');
+				var lvName = decodeURIComponent(levelArray[i].levelName);
+				lvName = (lvName=='') ? 'Không phân cấp' : lvName;
+				$node.append('<a class="expanded">'+lvName+'</a>');
+				
+				$ul = $('<ul>');
+				
+//				var issuesArray = query.Where("$.levelName==null && $.level=="+levelArray[i].level).ToArray();
+				var issuesArray = query.Where(function(x){return x.levelName==null && x.level==levelArray[i].level;}).ToArray();
+
+				for(var j=0; j<issuesArray.length; j++){
+					var $a = $('<a>').text(decodeURIComponent(issuesArray[j].name));
+					
+					if(slidePath.trim().toLowerCase() == 'sonla' | slidePath.trim().toLowerCase() == 'lamdong')
+						$a.attr('href', '/'+$('#DB_Path').val()+'/VanBanPhapLuat2?openView&Cat='+issuesArray[j].name);
+					else
+						$a.attr('href', '/'+$('#DB_Path').val()+'/VanBanPhapLuat?openView&Cat='+issuesArray[j].name);
+					
+					//$a.attr('href', '/'+$('#DB_Path').val()+'/VanBanPhapLuat?openView&Cat='+issuesArray[j].name);
+					var $li = $('<li class="leaf">');
+					$li.append($a);
+					$ul.append($li);
+				}
+				$node.append($ul);
+				$nav.append($node);
+			}
+			$('#issues-by-level').prev('.loading').hide();
+			activateIssue();
+		}
+	});
+	$('#issues-by-level').delegate('li.node>a', 'click', function(){
+		$(this).next('ul').slideToggle();
+		$(this).toggleClass('expanded');
+	});
+});
+// highlight active issue
+function activateIssue(){
+	var activeCate = window.location.href.getValueByKey('cat');
+	if(activeCate!=''){
+		$('#issues-by-level .leaf a').each(function(){
+			if($(this).text()==activeCate)
+				$(this).addClass('g-active');
+		});
+	}
+}
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+$(function(){
+	$('#gazettedocs-by-month a.gazette-month').click(function(){
+		var year = $(this).attr('year');
+		var $months = $(this).next('div.months');
+		if($months.attr('loaded')!==undefined)
+			$months.toggle();
+		else{
+			var SlidePath = '';
+			if($('#SlidePath_SubMonth') != null){
+				SlidePath = $('#SlidePath_SubMonth').val();
+			}
+			var URL = '/'+$('#DB_Path').val()+'/html?OpenPage&view=GazetteDocsByYearMonth&RestrictToCategory='+encodeURIComponent(year)+'&CollapseView';
+			if(SlidePath == 'sonla' | SlidePath == 'lamdong'){
+				URL = '/'+$('#DB_Path').val()+'/html?OpenPage&view=GazetteDocsByYearMonth2&RestrictToCategory='+encodeURIComponent(year)+'&CollapseView';
+			}
+			$.ajax({
+				url		: URL,
+				async	: false,
+				success	: function(html){
+					$months.append(html);
+					$months.attr('loaded', '');
+					$months.slideToggle();
+				}
+			});
+		}
+	});
+	if(window.location.href.toLowerCase().indexOf('vbcongbaotheothang')>-1){
+//		var cate = $('#cate').val();
+		var cate = window.location.href.getValueByKey('RestrictToCategory');
+		var year = cate.substring(0, cate.indexOf('/')), month = cate.substring(cate.indexOf('/')+1);
+		var $navBlock = $('#gazettedocs-by-month');
+		activateMonth(month, year, $navBlock);
+	}
+});
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+$(function(){
+	var SlidePath = '';
+	if($('#SlidePath_SubAgency') != null){
+		SlidePath = $('#SlidePath_SubAgency').val();
+	}
+	if(SlidePath == 'lamdong'){ //Bản Lâm Đồng chỉ hiện HĐND Tỉnh hoặc UBND Tỉnh
+		$('.classTenCQBH').each(function(){
+			var tencq = $(this).text();
+			if(tencq != null && tencq != '') tencq = tencq.trim().toLowerCase();
+			if(!(tencq == 'hđnd tỉnh' | tencq == 'ubnd tỉnh' | tencq == 'hội đồng nhân dân tỉnh' | tencq == 'ủy ban nhân dân tỉnh')){
+				$(this).hide();
+			}
+		})
+	}
+})
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+$(function(){
+//	$('#tempYear option').each(function(){
+//		$('#gazette-year').append('<option>'+$(this).text()+'</option>');
+//	});
+	$('.cb-table-menu-group').delegate('#gazette-year', 'change', function(){
+		var $this = $(this);
+		var divId = isNaN(parseInt($(this).val())) ? 'divNaN' : ('div'+$(this).val());
+		var $div = $('#'+divId);
+		if($div.length > 0){
+			$div.siblings('div').hide();
+			$div.show();
+//			resizePickerFrame();
+			initialize();
+		}else{
+			//var $loading = $('<img src="./loading.gif" style="display: block; margin-left: 20px">');
+			var $loading = $('#loading-img');
+			//$this.after($loading);
+			//$loading.show();
+			$loading.css('display', 'block');
+			var cateName = $(this).find('option:selected').text().trim();
+			cateName = (cateName == 'Không rõ năm') ? (' ' + cateName) : cateName;
+			$.ajax({
+				url		: '/'+$('#DB_Path').val()+'/GazettesByYearMonth?openView&Count=-1&RestrictToCategory='+encodeURIComponent(cateName)
+				,dataType	: 'html'
+				,type	: 'GET'
+				,success	: function(response){
+					//get form element
+					var $response;
+					if($.browser && $.browser.msie && parseInt($.browser.version)<10){
+						$response = $('<html>').html(response);
+					}else{
+						var isScript = $(response).get(5);
+						if(!$(isScript).is("script"))
+							$response = $('<html>').html($(response).get(5));
+						else
+							$response = $('<html>').html(response);
+					}
+
+					$viewBody = $response.find('form>table').attr('cellpadding', 0).css('width', '100%');
+					$viewBody.find('img[src*="/icons/ecblank.gif"]').remove();
+					var $cate = $viewBody.find('img[src*="/icons/collapse.gif"]').closest('td').addClass('gazette-month').siblings('td').remove();
+					//$cate.parent().attr('iscate', true);
+					$viewBody.find('.gazette-month').parent().attr('iscate', true);
+					var cateIndex = cateName;
+					for(var i=0; i<$viewBody.find('tr').length; i++){
+						var $tr = $viewBody.find('tr:eq('+i+')');
+						if($tr.find('td.gazette-month').length>0){
+							cateIndex = cateName + i;
+						}
+						$tr.attr('cate', cateIndex);
+					}
+					$viewBody.find('img[src*="/icons/collapse.gif"]').parent().remove();
+					$viewBody.find('a').addClass('gazette-no').removeAttr('href').closest('td').siblings('td').remove();
+					$div = $(document.createElement('div'));
+					$div.attr('id', divId).append($viewBody);
+					
+					$this.siblings('div').hide();
+					//$this.after($div);
+					$loading.after($div);
+					//$loading.remove();					
+					$loading.hide();					
+					if(window.location.href.indexOf('Seq') > 0)
+					{
+						$('tr[iscate="true"]').each(function(){
+							hideCate($(this));
+						});
+						return;
+					}
+				
+					initialize();
+				}
+			});
+		}
+	});
+	var latestYear = 0;
+	for(var i=0; i<$('#gazette-year option').length; i++){
+		var $option = $('#gazette-year option:eq('+i+')');
+		var year = parseInt($option.val());
+		if(!isNaN(year) && year>latestYear){
+			latestYear = year;
+		}
+	}
+	$('#gazette-year').val(latestYear);
+	$('#gazette-year').change();
+	
+//	$('.cb-table-menu-group').delegate('.gazette-month', 'click', function(){
+	//fffffffffffffffffffffff
+//	$('form:eq(0)').attr('name')
+//	});
+	$('.cb-table-menu-group').delegate('a.gazette-no', 'click', function(){
+		var returnValue = $(this).find('span').attr('value');
+		//use as a picker
+		if(parent.$('#gazette-picker-frame').length > 0){
+			var $container = parent.$('#gazette-picker-frame');
+			var returnto = $container.attr('returnto');
+			parent.$('#'+returnto).val(returnValue);
+			$container.hide();
+		}else{ //use as a navigation	
+			var docCate = $(this).find('span').attr('doccate');
+			//if(window.location.href.getValueByKey('gazette')=='')	
+				loadDocumentsByCate(encodeURIComponent(returnValue));
+		}
+	});
+	$('.cb-table-menu-group').delegate('tr[iscate="true"]', 'click', function(){
+		var $trCate = $(this);
+		var cate= $trCate.attr('cate'), $gazettes = $trCate.siblings('[cate="'+cate+'"]');
+		if($gazettes.length==1 && top.location.href.indexOf('DanhMucVB')==-1){
+			$gazettes.first().find('a.gazette-no').click();
+		}else{
+			if($trCate.siblings('[cate="'+cate+'"]').is(':visible')){
+				hideCate($trCate);
+			}else{			
+				$trCate.siblings('[iscate="true"]').each(function(){			
+					hideCate($(this));
+				});
+				showCate($trCate);
+			}
+		}
+	});
+	//view documents by gazette date (not by gazzete)
+	$('.documents-list-body').delegate('.gazettes-list', 'click', function(){
+		window.open('./DocumentsByGazetteDate?openView&RestrictToCategory='+$(this).attr('attrrestrict'));
+		/*$.ajax({
+			url		: './GazettesByYearMonthDay?openView&RestrictToCategory='+$(this).attr('attrrestrict'),
+			success	: function(response){
+				//response is gazettes list by date
+				var $response = $('<html>').html(response);
+				$viewBody = $response.find('form>table');
+				var $html = $('<html>');
+				var index = 1;
+				$viewBody.find('tr:gt(0)').each(function(){
+					var gazetteNo = $(this).text().trim();
+					gazetteNo = encodeURIComponent(gazetteNo);
+					$.ajax({
+						url		: './DocumentsByGazette?openView&RestrictToCategory='+gazetteNo,
+						async	: false,
+						success	: function(docsResponse){
+							var $docsResponse = $('<html>').html(docsResponse);
+							$docsResponse.find('tr:gt(0) a').each(function(){
+								console.log(index+'-------'+$(this).text());
+								$html.append(index+'-------'+$(this).text());
+								index++;
+							});
+						}
+					});
+				});
+				var w = window.open();
+				$(w).append($html);
+			}
+		});*/
+	});
+});
+function resizePickerFrame(){
+	parent.$('#gazette-picker-frame').css('height', ($('.cb-table-menu-group').height()+6)+'px');
+}
+function initialize(){
+	//hide all cates
+	$('tr[iscate="true"]').each(function(){
+		hideCate($(this));
+	});
+	//show the first cate
+	//showCate($('tr[iscate="true"]:eq(0)'));
+	$('tr:visible[iscate="true"]:eq(0)').click();
+	resizePickerFrame();
+	if($('form:eq(0)').attr('name')!='_Document' && $('form:eq(0)').attr('name')!='_GazettePicker'){
+		//show the first gazette if don't search
+		//if(window.location.href.getValueByKey('Seq')=='')
+			//$('.gazette-no:visible:eq(0)').click();
+		if(window.location.href.indexOf('Seq') < 0)
+		{
+			$('.gazette-no:visible:eq(0)').click();
+		}
+	}
+}
+function showCate($trCate){
+	var cate= $trCate.attr('cate');
+	//alert(cate);
+	if($('form:eq(0)').attr('name')=='_DanhMucVB'){
+		$('.documents-list-body').html('');
+		var restrict = $('#gazette-year option:selected').text().trim() + "{" + $trCate.text().trim() + "}";
+		restrict = encodeURIComponent(restrict);
+		$.ajax({
+			url		: './GazettesByYearMonth_Day?openView&Count=-1&Collapse=1&RestrictToCategory=' + restrict,
+			success	: function(response){
+				//get form element
+				var $response;
+				if($.browser && $.browser.msie && parseInt($.browser.version)<10){
+					$response = $('<html>').html(response);
+				}else{
+					$response = $('<html>').html($(response).get(5));
+				}
+				$viewBody = $response.find('table');
+				$viewBody.find('tr:gt(0)').each(function(){
+					//var attrRestrict = restrict + encodeURIComponent("{"+$(this).text().trim()+"}");
+					var attrRestrict = encodeURIComponent($(this).text().trim());
+					var $a = $('<a>').text($(this).text().trim()).addClass('gazette-no gazettes-list')
+						.attr('attrrestrict', attrRestrict);
+					$('.documents-list-body').append($a);
+				});
+			}
+		});
+//		var html = '';
+//		$trCate.siblings('[cate="'+cate+'"]').each(function(){
+//			html += $(this).find('td').html();
+//		});
+//		$('.documents-list-body').html(html);
+		return;
+	}
+	$trCate.siblings('[cate="'+cate+'"]').show();
+	resizePickerFrame();
+}
+function hideCate($trCate){
+	var cate= $trCate.attr('cate');
+	$trCate.siblings('[cate="'+cate+'"]').hide();
+	resizePickerFrame();
+}
+function loadDocumentsByCate(docCate){
+	$('#loading-img').show();
+	var url = '/'+$('#DB_Path').val()+'/DocumentsByGazette?openView&Count=-1&RestrictToCategory=' + docCate;
+	var fullNo = decodeURIComponent(docCate);
+	$('#no').text(fullNo.substr(0, fullNo.indexOf('Ngày')));
+	var tempDate = fullNo.substr(fullNo.indexOf('Ngày'));
+	tempDate = 'Ngày '+tempDate.substr(tempDate.indexOf(' ')).toInformalDate();
+	$('#gazette-no').text(tempDate);
+	$.ajax({
+		'url' : url
+		,success : function(response){
+			response = response.replace("Ph&#7847;n", "");
+			response = response.replace("Ph&#7847;n", "");
+			response = response.replace("Phần", "");
+			response = response.replace("Phần", "");
+			response = response.replace("văn b&#7843;n khác", "văn bản pháp luật khác");
+			response = response.replace("văn bản khác", "văn bản pháp luật khác");
+			var $response;
+			if($.browser && $.browser.msie && parseInt($.browser.version)<10){
+				$response = $('<html>').html(response);
+			}else{
+				$response = $('<html>').html($(response).get(0));
+			}
+			if($response.find('h2:contains("No documents found")').length==0){
+				if($('.toc').is(':hidden')){
+					$('.toc').show();
+					$('#divNoidung').remove();
+				}
+				
+				$('#documentsByGazette').html(response);
+			}
+			else{
+				if($('.toc').is(':hidden')){
+					$('.toc').show();
+					$('#divNoidung').remove();
+				}
+				
+				$('#documentsByGazette').html('<tr><td>Không có văn bản</td></tr>');
+			}
+			$('#documentsByGazette').closest('tr').show();
+			extractDocCategory();
+			$('#view-container').closest('tr').hide();
+			if($('#view-container').find('tr').length>0 && !$('#view-container').attr('loaded')){
+				$('#documentsByGazette').closest('tr').hide();
+				$('#view-container').closest('tr').show();
+			}
+	
+			$('#view-container').attr('loaded', true);
+			$('#loading-img').hide();
+			//define in Search subform
+			toggleSearchResult('none');
+		}
+	});
+	
+	//tung 1
+	var fullNo_edit = fullNo;
+	if(fullNo_edit.lastIndexOf('+') > -1){
+		var listfullNo_edit = fullNo_edit.split('+');
+		fullNo_edit = '';
+		for(var j=0; j<listfullNo_edit.length; j++){
+			fullNo_edit = fullNo_edit + listfullNo_edit[j] + '_';
+		}
+		fullNo_edit = fullNo_edit.substring(0, fullNo_edit.length-1);
+	}
+	
+	var url1 = '/'+$('#DB_Path').val()+'/GazettesByYearMonthDayNo?openView&Count=-1&RestrictToCategory=' + fullNo_edit;
+	//console.log('tung ::: ' + url1)
+	$.ajax({
+		'url' : url1,
+		success : function(response){
+			if(response.lastIndexOf('<gazettefile>') > -1 && response.lastIndexOf('</gazettefile>') > -1){
+				var from = response.lastIndexOf('<gazettefile>');
+				var to = response.lastIndexOf('</gazettefile>');
+				response = response.substring(from, to);
+			}
+			else response = '';
+			$('#gazette-file').html(response);
+		}
+	});
+	//tung 2
+	
+/*	$('#documentsByGazette').load(
+		url,
+		function(response, status, xhr){
+			$('#documentsByGazette').closest('tr').show();
+			$('#view-container').closest('tr').hide();
+			if($('#view-container').find('tr').length>0 && !$('#view-container').attr('loaded')){
+				$('#documentsByGazette').closest('tr').hide();
+				$('#view-container').closest('tr').show();
+			}
+	
+			$('#view-container').attr('loaded', true);
+		}
+	);*/		
+}
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+var href = window.location.href;
+href = href.trim().toLowerCase();
+$(function(){
+	if($('#idRSS') != null){
+		var $href = $('#idRSS').attr('href');
+		var path = href.substring(0, href.lastIndexOf('congbao.nsf/') + 12);
+		$('#idRSS').attr('href', $href + '&path=' + path);
+	}
+})
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+$(function(){
+	$('#documents-by-month a.gazette-month').click(function(){
+		var year = $(this).attr('year');
+		var $months = $(this).next('div.months');
+		if($months.attr('loaded')!==undefined)
+			$months.toggle();
+		else{
+			$.ajax({
+				url		: '/'+$('#DB_Path').val()+'/html?OpenPage&view=DocumentsByYearMonth&RestrictToCategory='+encodeURIComponent(year)+'&CollapseView',
+				async	: false,
+				success	: function(html){
+					$months.append(html);
+					$months.attr('loaded', '');
+					$months.slideToggle();
+				}
+			});
+		}
+	});
+	if(window.location.href.toLowerCase().indexOf('vbtheothang')>-1){
+		var cate = $('#cate').val();
+		var year = cate.substring(0, cate.indexOf('/')), month = cate.substring(cate.indexOf('/')+1);
+		var $navBlock = $('#documents-by-month');
+		activateMonth(month, year, $navBlock);
+	}
+});
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+$(function(){
+	var $nav = $('#links-by-group');
+	if($nav.length==0)
+		return;
+	var jsonUrl = '/'+$('#DB_Path').val()+'/json?openPage&view=JSONLinksByGroup';
+	$.ajax({
+		url		: jsonUrl,
+		success	: function(json){
+			var query = Enumerable.From(json);
+			groupQuery = query.Where(function(x){return x.categorized==true;});
+			var groupsArray = groupQuery.ToArray();
+			for(var i=0; i<groupsArray.length; i++){			
+				var $node = $('<li class="node">');
+				$node.append('<a>'+decodeURIComponent(groupsArray[i].group)+'</a>');
+				
+				$ul = $('<ul>');
+				var linksArray = query.Where(function(x){return !x.categorized && x.group==groupsArray[i].group;}).ToArray();
+				for(var j=0; j<linksArray.length; j++){
+					var $a = $('<a>').text(decodeURIComponent(linksArray[j].name));
+					$a.attr('href', decodeURIComponent(linksArray[j].url)).attr('target', linksArray[j].target);
+					var $li = $('<li class="leaf">');
+					$li.append($a);
+					$ul.append($li);
+				}
+				$ul.hide();
+				$node.append($ul);
+				$nav.append($node);
+			}
+			$('.loading').hide();		
+		}
+	});
+	$('#links-by-group').delegate('li.node>a', 'click', function(){
+		$(this).next('ul').slideToggle();
+		$(this).toggleClass('expanded');
+	});
+});
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+$(function(){
+	if($('#histats_text') != null){
+		if($('#histats_text').attr('name') == 'histats_text'){
+			var result = '';
+			var dangxem = '0';
+			var homnay = '0';
+			var pagehomnay = '0';
+			var tatca = '0';	
+			var html = '';
+			var histatsID = $('#histatsID').val();
+			var userImg = '<img src="1024px-User_icon_2_svg.png" style="width:12px; height:12px; vertical-align:-2px">';
+			var url = 'https://cors-anywhere.herokuapp.com/https://s4.histats.com/stats/' + histatsID + '.php?' + histatsID;
+			//var url = 'https://s4.histats.com/stats/' + histatsID + '.php?' + histatsID;
+			$.ajax({
+				url: url,
+				type: 'GET',
+				success: function(response){			
+					//console.log(response)
+					if(response != ''){
+						var data = response.split(';')[0];
+						if(data != null && data != ''){
+							data = data.split('"')[1];
+							if(data != null && data.lastIndexOf('#') > -1){
+								var listdata = data.split('#');
+								//console.log(listdata.length)
+								for(var i=0; i<listdata.length; i++){
+									if(listdata[i].trim() != ''){
+										result = result + '&' + listdata[i];
+									}
+								}
+							}
+						}
+						//console.log(result)
+						if(result != ''){
+							var resultParams = new URLSearchParams(result);
+							if(resultParams.has('7Online')){
+								dangxem = resultParams.get('7Online');
+							}
+							if(resultParams.has('3Vis. today')){
+								homnay = resultParams.get('3Vis. today');
+							}
+							if(resultParams.has('5Pag. today')){
+								pagehomnay = resultParams.get('5Pag. today');
+							}
+							if(resultParams.has('4Visits')){
+								tatca = resultParams.get('4Visits');
+							}
+							//console.log(dangxem + ' ' + homnay + ' ' + pagehomnay + ' ' + tatca)
+							/*html = '<table>';
+							html += '<tr><th style="color:#0E447B">Thống kê truy cập</th></tr>';
+							html += '<tr><td style="color:#3B3B3B">&nbsp;Đang xem: ' + dangxem + '</td></tr>';
+							html += '<tr><td style="color:#3B3B3B">&nbsp;Hôm nay: ' + homnay + '</td></tr>';
+							//html += '<tr><td style="color:#3B3B3B">&nbsp;Trang xem hôm nay: ' + pagehomnay + '</td></tr>';
+							html += '<tr><td style="color:#3B3B3B">&nbsp;Tất cả: ' + tatca + '</td></tr>';
+							html += '</table>';*/
+						}
+					}
+					html = '<table>';
+					html += '<tr><th style="color:#0E447B">Thống kê truy cập</th></tr>';
+					html += '<tr><td style="color:#222; line-height: 23px;">' + userImg + '&nbsp;Đang xem: <font style="font-weight:bold; color:black">' + dangxem + '</font></td></tr>';
+					html += '<tr><td style="color:#222; line-height: 23px;">' + userImg + '&nbsp;Hôm nay: <font style="font-weight:bold; color:black">' + homnay + '</font></td></tr>';
+					//html += '<tr><td style="color:#3B3B3B">&nbsp;Trang xem hôm nay: ' + pagehomnay + '</td></tr>';
+					html += '<tr><td style="color:#222; line-height: 23px;">' + userImg + '&nbsp;Tất cả: <font style="font-weight:bold; color:black">' + tatca + '</font></td></tr>';
+					html += '</table>';
+					$('#histats_text').html(html);
+				}
+			});
+		}
+	}
+});
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+function toggleSearchResult(display){
+	$('.divData.divDataSearch').css({'display': display});
+	if($('.divData.divDataSearch').is(':visible')){
+		$('#search').siblings().hide();
+	}else{
+		$('#search').siblings().show();
+	}
+}
+$(function(){
+	var imgSrc = '/' + $('#DB_Path').val() + '/icon-calendar.gif';
+	$.datepicker.setDefaults(
+		$.extend(
+			{showOn			: 'both'},
+			{buttonImage		: imgSrc},
+			{buttonText		: "Chọn ngày từ lịch"},
+			{buttonImageOnly	: true}
+  		)
+	);
+	$('.date').datepicker();
+	
+	$('.adv-search').click(function(){
+		$('.full-text').slideToggle();
+		$('.advance').slideToggle();
+		$(this).toggleClass('collapse');
+		var option = $(this).hasClass('collapse') ? 'advance' : 'fulltext';
+		//$('#search-option').val(option);
+		$('input[name="SearchOption"]').val(option);
+	});
+	
+	if($('input[name="SearchOption"]').val() == 'advance'){
+		$('.full-text').hide();
+		$('.advance').show();
+		$('.adv-search').toggleClass('collapse');
+	}
+	var display = ($('.divData.divDataSearch table tr').length > 1) ? '' : 'none';
+	toggleSearchResult(display);
+	
+	$('#search-advance').click(function(){
+		$('#Page').val(1);
+		$('#AdvanceSearch').click();
+	});
+	$('#search-fulltext').click(function(){
+		//$('form').submit();
+		$('#Page').val(1);
+		$('#AdvanceSearch').click();
+	});
+	$('[name="SearchQuery"]').keydown(function(e){
+		var code = e.which || e.keyCode;
+		
+		if(code==13){
+			e.preventDefault();
+			if($.trim($(this).val())!='')
+				$('#search-fulltext').click();
+		}
+	});
+});
+
+// -->
+</script>
+<script type="text/javascript" async="" src="//s10.histats.com/js15_as.js"></script></head>
+<body text="#000000" bgcolor="#FFFFFF">
+
+<form method="post" action="/congbao.nsf/DanhMucVB?OpenForm&amp;Seq=1" name="_DanhMucVB" id="_DanhMucVB">
+<input type="hidden" name="__Click" value="0" id="__Click"><input type="hidden" id="Path_Info" value="/congbao.nsf/DanhMucVB">
+<input type="hidden" id="Query_String" value="">
+<input type="hidden" id="Server_Name" value="congbao.sonla.gov.vn">
+<input type="hidden" id="Server_Port" value="443">
+<input type="hidden" id="DB_Path" value="congbao.nsf">
+<input type="hidden" id="Form" value="">
+<input type="hidden" id="DocEdited" value="1">
+<input type="hidden" id="viewname" value="">
+<input type="hidden" id="serverNow" value="08/04/2026 09:03:00 AM">
+<script type="text/javascript">var attNames=[];</script><div class="cb-div-body">
+	<div class="cb-div-head">
+		<div class="banner-text">công báo<div>Tỉnh Sơn La</div></div>
+		<div id="slider" class="nivoSlider">
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		<img class="nivo-main-image" src="/congbao.nsf/img/slider/sonla/02.png" style="display: inline; height: 0px;"><div class="nivo-caption"></div><div class="nivo-box" name="0" rel="0" style="opacity: 1; left: 0px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-0px;"></div><div class="nivo-box" name="1" rel="0" style="opacity: 1; left: 50px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-50px;"></div><div class="nivo-box" name="2" rel="0" style="opacity: 1; left: 100px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-100px;"></div><div class="nivo-box" name="3" rel="0" style="opacity: 1; left: 150px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-150px;"></div><div class="nivo-box" name="4" rel="0" style="opacity: 1; left: 200px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-200px;"></div><div class="nivo-box" name="5" rel="0" style="opacity: 1; left: 250px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-250px;"></div><div class="nivo-box" name="6" rel="0" style="opacity: 1; left: 300px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-300px;"></div><div class="nivo-box" name="7" rel="0" style="opacity: 1; left: 350px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-350px;"></div><div class="nivo-box" name="0" rel="1" style="opacity: 1; left: 0px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-0px;"></div><div class="nivo-box" name="1" rel="1" style="opacity: 1; left: 50px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-50px;"></div><div class="nivo-box" name="2" rel="1" style="opacity: 1; left: 100px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-100px;"></div><div class="nivo-box" name="3" rel="1" style="opacity: 1; left: 150px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-150px;"></div><div class="nivo-box" name="4" rel="1" style="opacity: 1; left: 200px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-200px;"></div><div class="nivo-box" name="5" rel="1" style="opacity: 1; left: 250px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-250px;"></div><div class="nivo-box" name="6" rel="1" style="opacity: 1; left: 300px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-300px;"></div><div class="nivo-box" name="7" rel="1" style="opacity: 1; left: 350px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-350px;"></div><div class="nivo-box" name="0" rel="2" style="opacity: 1; left: 0px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-0px;"></div><div class="nivo-box" name="1" rel="2" style="opacity: 1; left: 50px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-50px;"></div><div class="nivo-box" name="2" rel="2" style="opacity: 1; left: 100px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-100px;"></div><div class="nivo-box" name="3" rel="2" style="opacity: 1; left: 150px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-150px;"></div><div class="nivo-box" name="4" rel="2" style="opacity: 1; left: 200px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-200px;"></div><div class="nivo-box" name="5" rel="2" style="opacity: 1; left: 250px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-250px;"></div><div class="nivo-box" name="6" rel="2" style="opacity: 1; left: 300px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-300px;"></div><div class="nivo-box" name="7" rel="2" style="opacity: 1; left: 350px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-350px;"></div><div class="nivo-box" name="0" rel="3" style="opacity: 1; left: 0px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-0px;"></div><div class="nivo-box" name="1" rel="3" style="opacity: 1; left: 50px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-50px;"></div><div class="nivo-box" name="2" rel="3" style="opacity: 1; left: 100px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-100px;"></div><div class="nivo-box" name="3" rel="3" style="opacity: 1; left: 150px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-150px;"></div><div class="nivo-box" name="4" rel="3" style="opacity: 1; left: 200px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-200px;"></div><div class="nivo-box" name="5" rel="3" style="opacity: 1; left: 250px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-250px;"></div><div class="nivo-box" name="6" rel="3" style="opacity: 1; left: 300px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-300px;"></div><div class="nivo-box" name="7" rel="3" style="opacity: 1; left: 350px; top: 0px; width: 50px; height: 126px;"><img src="/congbao.nsf/img/slider/sonla/02.png" style="position:absolute; width:400px; height:auto; display:block; top:-0px; left:-350px;"></div></div>
+	</div>
+	<div class="cb-div-navigation">
+		<div class="welcome" style="visibility: visible">
+			<a id="user" style="cursor:pointer"></a>
+			<a href="?login&amp;redirectto=congbao.nsf" target="_parent" style="text-decoration:none;" class="subBanner_text" title="Đăng nhập">[ Đăng nhập]</a>
+		</div>
+		<ul class="cb-ul-navigation-items">
+			<li><a href="/congbao.nsf/TrangChu" class="">Trang chủ</a></li>
+			<li><a href="#" class="">Giới thiệu</a></li>
+			<li><a href="/congbao.nsf/VanBan" class="">Sơ đồ văn bản</a></li>
+			<li><a href="/congbao.nsf/DanhMucVB" class="active">Danh mục văn bản</a></li>
+			<li><a href="/congbao.nsf/VanBanQPPL2" class="" title="Văn bản quy phạm pháp luật">Văn bản QPPL</a></li>
+			<!--li><a href="/">Góp ý</a></li>
+			<li><a href="/">RSS</a></li-->
+		</ul>
+		<b id="now">Thứ ba, ngày 4 tháng 8 năm 2026</b>
+		<!--div class="cb-div-search"><input type="text" value="Tìm kiếm..."/><a><img align="top" src="img/search-button.png"/></a></div-->
+	</div>
+	<table cellpadding="0" cellspacing="0" border="0" class="cb-table-main">
+		<tbody><tr>
+			<td class="cb-td-menu-left" style="vertical-align: top"><table cellspacing="0" cellpadding="0" class="cb-table-menu-group">
+	<!--thead>
+		<th><a>CƠ QUAN BAN HÀNH</a></th>
+	</thead-->
+	<tbody>
+		<tr>
+			<td style="background-color: #fcf7b6; padding: 8px; line-height: 20px">
+				<marquee behavior="scroll" direction="up" scrollamount="1" style="height: 60px;  text-align: justify; text-justify: inter-word;">"Văn bản đăng trên Công báo là văn bản chính thức và có giá trị như bản gốc. Trường hợp có sự khác nhau giữa Công báo in và Công báo điện tử thì sử dụng Công báo in làm căn cứ chính thức." (trích Nghị định số 78/2025/NĐ-CP ngày 01/4/2025 của Chính phủ)</marquee>
+			</td>
+		</tr>
+	</tbody>
+</table><table cellspacing="0" cellpadding="0" class="cb-table-menu-group">
+	<thead>
+		<tr><th>CÁC SỐ CÔNG BÁO</th>
+	</tr></thead>
+	<tbody>
+		<tr>
+			<td style="text-align: center; padding: 4px 0 0; background-color: #fff">
+<input name="%%Surrogate_year" type="hidden" value="1" id="%%Surrogate_year">
+<select name="year" id="gazette-year" style="width:160px;">
+<option>2026
+</option><option>2025
+</option><option>2024
+</option><option>2023
+</option><option>2022
+</option><option>2021
+</option><option>2020
+</option><option>2019
+</option><option>2018
+</option><option>2017
+</option><option>2016
+</option><option>2015
+</option><option>2014
+</option><option>2013
+</option><option>2012
+</option><option>2011
+</option><option>2010
+</option><option>2009
+</option><option>2008
+</option><option>2007
+</option><option>2006
+</option><option value="_b415mh4recsg75p10do3cer8_">Không rõ năm</option></select>
+<!--select id='gazette-year'></select--><img id="loading-img" src="./loading.gif" style="display: none; margin-left: auto; margin-right: auto;"><div id="div2026"><table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+<tbody><tr valign="top" iscate="true" cate="20260"><td colspan="2" nowrap="" class="gazette-month">Tháng 7</td></tr>
+
+<tr valign="top" cate="20260" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B47%7D" value="Số 47 Ngày 25/7/2026">‣</span> Số 47 Ngày 25/7</a></td></tr>
+
+<tr valign="top" cate="20260" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B46%7D" value="Số 46 Ngày 10/7/2026">‣</span> Số 46 Ngày 10/7</a></td></tr>
+
+<tr valign="top" cate="20260" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B44%20%2B%2045%7D" value="Số 44 + 45 Ngày 10/7/2026">‣</span> Số 44 + 45 Ngày 10/7</a></td></tr>
+
+<tr valign="top" cate="20260" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B43%7D" value="Số 43 Ngày 10/7/2026">‣</span> Số 43 Ngày 10/7</a></td></tr>
+
+<tr valign="top" cate="20260" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B41%20%2B%2042%7D" value="Số 41 + 42 Ngày 10/7/2026">‣</span> Số 41 + 42 Ngày 10/7</a></td></tr>
+
+<tr valign="top" cate="20260" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B40%7D" value="Số 40 Ngày 10/7/2026">‣</span> Số 40 Ngày 10/7</a></td></tr>
+
+<tr valign="top" iscate="true" cate="20267"><td colspan="2" nowrap="" class="gazette-month">Tháng 6</td></tr>
+
+<tr valign="top" cate="20267" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B39%7D" value="Số 39 Ngày 25/6/2026">‣</span> Số 39 Ngày 25/6</a></td></tr>
+
+<tr valign="top" cate="20267" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B38%7D" value="Số 38 Ngày 10/6/2026">‣</span> Số 38 Ngày 10/6</a></td></tr>
+
+<tr valign="top" iscate="true" cate="202610"><td colspan="2" nowrap="" class="gazette-month">Tháng 5</td></tr>
+
+<tr valign="top" cate="202610" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B37%7D" value="Số 37 Ngày 30/5/2026">‣</span> Số 37 Ngày 30/5</a></td></tr>
+
+<tr valign="top" cate="202610" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B36%7D" value="Số 36 Ngày 20/5/2026">‣</span> Số 36 Ngày 20/5</a></td></tr>
+
+<tr valign="top" cate="202610" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B35%7D" value="Số 35 Ngày 20/5/2026">‣</span> Số 35 Ngày 20/5</a></td></tr>
+
+<tr valign="top" cate="202610" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B33%20%2B%2034%7D" value="Số 33 + 34 Ngày 20/5/2026">‣</span> Số 33 + 34 Ngày 20/5</a></td></tr>
+
+<tr valign="top" cate="202610" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B32%7D" value="Số 32 Ngày 15/5/2026">‣</span> Số 32 Ngày 15/5</a></td></tr>
+
+<tr valign="top" cate="202610" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B30%20%2B%2031%7D" value="Số 30 + 31 Ngày 15/5/2026">‣</span> Số 30 + 31 Ngày 15/5</a></td></tr>
+
+<tr valign="top" iscate="true" cate="202617"><td colspan="2" nowrap="" class="gazette-month">Tháng 4</td></tr>
+
+<tr valign="top" cate="202617" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B29%7D" value="Số 29 Ngày 30/4/2026">‣</span> Số 29 Ngày 30/4</a></td></tr>
+
+<tr valign="top" cate="202617" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B28%7D" value="Số 28 Ngày 30/4/2026">‣</span> Số 28 Ngày 30/4</a></td></tr>
+
+<tr valign="top" cate="202617" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B27%7D" value="Số 27 Ngày 30/4/2026">‣</span> Số 27 Ngày 30/4</a></td></tr>
+
+<tr valign="top" cate="202617" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B26%7D" value="Số 26 Ngày 30/4/2026">‣</span> Số 26 Ngày 30/4</a></td></tr>
+
+<tr valign="top" cate="202617" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B25%7D" value="Số 25 Ngày 15/4/2026">‣</span> Số 25 Ngày 15/4</a></td></tr>
+
+<tr valign="top" cate="202617" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B24%7D" value="Số 24 Ngày 15/4/2026">‣</span> Số 24 Ngày 15/4</a></td></tr>
+
+<tr valign="top" cate="202617" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B23%7D" value="Số 23 Ngày 15/4/2026">‣</span> Số 23 Ngày 15/4</a></td></tr>
+
+<tr valign="top" cate="202617" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B22%7D" value="Số 22 Ngày 15/4/2026">‣</span> Số 22 Ngày 15/4</a></td></tr>
+
+<tr valign="top" iscate="true" cate="202626"><td colspan="2" nowrap="" class="gazette-month">Tháng 3</td></tr>
+
+<tr valign="top" cate="202626" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B21%7D" value="Số 21 Ngày 31/3/2026">‣</span> Số 21 Ngày 31/3</a></td></tr>
+
+<tr valign="top" cate="202626" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B19%20%2B%2020%7D" value="Số 19 + 20 Ngày 25/3/2026">‣</span> Số 19 + 20 Ngày 25/3</a></td></tr>
+
+<tr valign="top" cate="202626" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B18%7D" value="Số 18 Ngày 10/3/2026">‣</span> Số 18 Ngày 10/3</a></td></tr>
+
+<tr valign="top" cate="202626" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B17%7D" value="Số 17 Ngày 10/3/2026">‣</span> Số 17 Ngày 10/3</a></td></tr>
+
+<tr valign="top" iscate="true" cate="202631"><td colspan="2" nowrap="" class="gazette-month">Tháng 2</td></tr>
+
+<tr valign="top" cate="202631" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B16%7D" value="Số 16 Ngày 28/2/2026">‣</span> Số 16 Ngày 28/2</a></td></tr>
+
+<tr valign="top" cate="202631" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B15%7D" value="Số 15 Ngày 28/2/2026">‣</span> Số 15 Ngày 28/2</a></td></tr>
+
+<tr valign="top" iscate="true" cate="202634"><td colspan="2" nowrap="" class="gazette-month">Tháng 1</td></tr>
+
+<tr valign="top" cate="202634" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B13%20%2B%2014%7D" value="Số 13 + 14 Ngày 30/1/2026">‣</span> Số 13 + 14 Ngày 30/1</a></td></tr>
+
+<tr valign="top" cate="202634" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B12%7D" value="Số 12 Ngày 20/1/2026">‣</span> Số 12 Ngày 20/1</a></td></tr>
+
+<tr valign="top" cate="202634" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B10%20%2B%2011%7D" value="Số 10 + 11 Ngày 15/1/2026">‣</span> Số 10 + 11 Ngày 15/1</a></td></tr>
+
+<tr valign="top" cate="202634" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B08%20%2B%2009%7D" value="Số 08 + 09 Ngày 15/1/2026">‣</span> Số 08 + 09 Ngày 15/1</a></td></tr>
+
+<tr valign="top" cate="202634" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B06%20%2B%2007%7D" value="Số 06 + 07 Ngày 15/1/2026">‣</span> Số 06 + 07 Ngày 15/1</a></td></tr>
+
+<tr valign="top" cate="202634" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B05%7D" value="Số 05 Ngày 15/1/2026">‣</span> Số 05 Ngày 15/1</a></td></tr>
+
+<tr valign="top" cate="202634" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B04%7D" value="Số 04 Ngày 10/1/2026">‣</span> Số 04 Ngày 10/1</a></td></tr>
+
+<tr valign="top" cate="202634" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B02%20%2B%2003%7D" value="Số 02 + 03 Ngày 10/1/2026">‣</span> Số 02 + 03 Ngày 10/1</a></td></tr>
+
+<tr valign="top" cate="202634" style="display: none;"><td nowrap=""><a class="gazette-no"><span style="font-size: 16px; color: #cc0000" doccate="2026%2FNo.%7B01%7D" value="Số 01 Ngày 10/1/2026">‣</span> Số 01 Ngày 10/1</a></td></tr>
+</tbody></table></div></td>
+		</tr>
+	</tbody>
+</table><table cellspacing="0" cellpadding="0" class="cb-table-menu-group">
+	<thead><tr><th>Liên kết website</th></tr></thead>
+	<tbody><tr>
+		<td><div class="loading" style="display: none;"></div><ul class="tree" id="links-by-group"><li class="node"><a>Cơ quan chính phủ</a><ul style="display: none;"><li class="leaf"><a href="http://baochinhphu.vn/" target="_blank">Báo Chính phủ</a></li><li class="leaf"><a href="http://dangcongsan.vn/" target="_blank">Báo điện tử Đảng cộng sản Việt Nam</a></li><li class="leaf"><a href="http://congbao.chinhphu.vn/" target="_blank">Công báo chính phủ</a></li><li class="leaf"><a href="http://chinhphu.vn/" target="_blank">Cổng TTĐT Chính phủ</a></li></ul></li><li class="node"><a>Sở/ban/ngành</a><ul style="display: none;"><li class="leaf"><a href="http://www.baosonla.org.vn/" target="_self">Báo Sơn La</a></li><li class="leaf"><a href="https://sonla.gov.vn/" target="_blank">Cổng TTĐT tỉnh Sơn La</a></li></ul></li></ul></td>
+	</tr></tbody>
+</table><!-- son la, nam dinh, ha tinh (https) -->
+<div id="histats_img" style="padding-left: 20px; ">
+   <!-- Histats.com  (div with counter) --><div id="histats_counter"><div id="histats_counter_1556" style="display: block;"><a href="http://www.histats.com/viewstats/?sid=3527224&amp;ccid=406" target="_blank"><canvas id="histats_counter_1556_canvas" width="168" height="103"></canvas></a></div></div>
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,3527224,4,406,165,100,00011111']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?3527224&101" alt="" border="0"></a></noscript>
+<!-- Histats.com  END  -->
+</div>
+<!-- end son la, nam dinh, ha tinh (https) -->
+<input type="hidden" id="histatsID" value="3527224">
+			</td>
+			<td class="cb-td-center-main"><script type="text/javascript" src="simplePagination/jquery.simplePagination.js" style="display: none;"></script>
+<link type="text/css" rel="stylesheet" href="simplePagination/simplePagination.css" style="display: none;">
+<style type="text/css" style="display: none;">
+.simple-pagination {
+	float: right;
+	padding: 4px;
+}
+
+/* fix ie leq 9 */
+span.prev {
+	border-left: 1px solid silver;
+}
+
+span.ellipse.focused {
+	background: #fff;
+}
+
+span.ellipse input {
+	text-align: center;
+	width: 30px;
+	border: none;
+	margin: 0 -12px;
+}
+</style>
+<script type="text/javascript" style="display: none;">
+	function jumpToPage(page, pageNumber, isSearching, pageSize) {
+		if (page != pageNumber) {
+			if (isSearching) {
+				$('#Page').val(pageNumber);
+				$('#AdvanceSearch').click();
+			} else {
+				var start = pageSize * (pageNumber - 1) + 1;
+				var pageUrl = window.location.href;
+				var qsCate = '', 
+				restrict = pageUrl.getValueByKey('RestrictToCategory'),
+				form = pageUrl.getValueByKey('form'),
+				view = $('#view').val() || pageUrl.getValueByKey('view');
+				if(($('#cate').val() !== undefined))
+					qsCate = '&Cat=' + $('#cate').val();
+				else if(restrict!='')
+					qsCate = '&RestrictToCategory=' + restrict;
+				var qsForm = (form) ? '&form=' + form : '',
+				qsView = (view) ? '&view=' + view : '';
+				
+//				if (window.location.href.indexOf('$ViewTemplateForList') > -1)
+	//				pageUrl = '$ViewTemplateForList?OpenForm&view=' + $('#view')
+		//					.val()
+				var openFormIndex = pageUrl.toLowerCase().indexOf('?openform');
+				if($('#view').val()) 
+					pageUrl = $('#view').val() + '?OpenView';
+				else if(openFormIndex>-1)
+					pageUrl = pageUrl.substr(0, openFormIndex+9);
+				pageUrl += qsView + qsForm + qsCate + '&Start=' + start + '&page='
+						+ pageNumber;
+				
+				window.location.hash = '';
+				window.location.href = pageUrl;
+			}
+		}
+	}
+	$( function() {
+		var page = window.location.href.getValueByKey('page');
+		var isSearching = $('#pagination-key').val() == 'search';
+
+		if (isSearching)
+			page = $('#Page').val();
+		page = (page == '') ? 1 : parseInt(page);
+		var pageSize = parseInt(window.location.href.getValueByKey('Count'));
+		pageSize = (isNaN(pageSize)) ? 30 : pageSize;
+		var total = 0;
+		if($('#total[datasource]').length>0){
+			$.ajax({
+				url		: $('#total').attr('datasource'),
+				async	: false,
+				success	: function(text){
+					$('#total').text(text);
+				}
+			});
+		}
+		
+		if($('#total').text()!=''){
+			total = parseInt($('#total').text());
+		}
+		try {
+			$('.simple-pagination').pagination({
+				items : total,
+				itemsOnPage : pageSize,
+				cssStyle : 'compact-theme',
+				prevText : '&#9668;',
+				nextText : '&#9658;',
+				hrefTextPrefix : '#',
+				edges : 2,
+				onInit : function() {
+				},
+				onPageClick : function(pageNumber, event) {
+					jumpToPage(page, pageNumber, isSearching, pageSize);
+				}
+			});
+			$('.simple-pagination').pagination('selectPage', page);
+			if ($('.simple-pagination').pagination('getPagesCount') == 1) {
+				$('.simple-pagination').hide();
+			}
+			$('.ellipse')
+					.click(
+							function() {
+								if ($(this).find('input').length > 0)
+									return;
+								var min = parseInt($(this).parent().prev()
+										.text()), max = parseInt($(this)
+										.parent().next().text());
+								var $input = $('<input>');
+								$(this).text('').addClass('focused').append(
+										'&nbsp;').append($input).append(
+										'&nbsp;');
+								$input.focus().val(Math.round((min + max) / 2));
+								$input.blur( function() {
+									$(this).parent().removeClass('focused')
+											.text('...');
+									$(this).remove();
+								});
+								var keyHandler = function(e){
+									var code = e.keyCode || e.which;
+									var isDigit = (code<58 && code>47), isNumPad = (code<106 && code>95);
+									var isEditKey = (code>36 && code<41) || (code==8) || (code==46);
+									// 38: increase, 40: decrease
+									if(isDigit || isNumPad || isEditKey){
+										var noPage = parseInt($(this).val());
+										if(e.type=='keydown'){
+											if(code==38)
+												$(this).val(parseInt($(this).val())+1);
+											else if(code==40)
+												$(this).val(parseInt($(this).val())-1);
+										}
+										if(e.type=='keyup'){
+											if(noPage>max)
+												$(this).val(max);
+											if(noPage<min)
+												$(this).val(min);
+										}
+									}else if(code==13){
+										jumpToPage(page, parseInt($(this).val()), isSearching, pageSize);
+									}else{
+										e.preventDefault();
+									}
+								}
+								$input.keydown(keyHandler);
+								$input.keyup(keyHandler);
+							});
+		} catch (e) {
+			if (console && console.log) {
+				console.log(e);
+				console.log('at simplePagination/paginate.html');
+			}
+		}
+	});
+</script><input type="hidden" id="pagination-key" value="search" style="display: inline-block;">
+<div id="search">
+<div class="caption full-text" style="height: 22px"><span class="ftx-search">Tìm kiếm</span><span style="float:right; cursor:pointer; margin-top:1px" onclick="window.open('RSS?OpenForm', '_self');">RSS <img src="rss.png" style="width:12px"></span></div>
+	<div class="full-text"><table class="search-form"><tbody><tr><td>Từ khóa:</td><td><font face="Tahoma">
+<input name="SearchQuery" value="" size="50" style="height: 25px; line-height: 20px" id="SearchQuery"></font>	</td><td><a class="btn-findicons" id="search-fulltext"><span>Tìm kiếm</span></a></td></tr></tbody></table></div>
+	<div class="caption" style="height: 22px"><span class="adv-search">Tìm kiếm nâng cao</span></div>
+	<div class="advance box-main" style="display: none">
+<table width="100%" cellpadding="0" cellspacing="0" class="tblMain" style="margin-left: -1px">
+	<tbody><tr><td class="emptycell" colspan="4"></td></tr>
+	<tr><td class="formlabel">Số, ký hiệu: </td><td class="formbody" colspan="4">
+<input name="OutSymbolQuery" value="" style="width:37%" id="OutSymbolQuery"></td></tr>
+<tr>
+    <td class="formlabel">Ngày ban hành :&nbsp;</td>
+    <td class="formbody" width="30%">
+	<table cellpadding="0" cellspacing="0" width="100%"><tbody><tr>
+		<td align="right"><font face="Tahoma"> từ:</font>&nbsp;</td>
+		<td width="100%">
+<input name="OutDateQuery" value="" onkeydown="if (window.event.keyCode == key(&quot;keyopenWindow&quot;)) {
+	document.forms[0].OutDate.focus();
+	showCalendarControl(forms[0].OutDate);
+	document.forms[0].OutDate.value=document.forms[0].OutDate;
+	document.forms[0].OutDate.focus();
+	autoDate('OutDateQuery');
+}	
+
+" onchange="autoDate('OutDateQuery');" class="date hasDatepicker" id="OutDateQuery"><img class="ui-datepicker-trigger" src="/congbao.nsf/icon-calendar.gif" alt="Chọn ngày từ lịch" title="Chọn ngày từ lịch"></td>
+		<!--td><img height=22 width=22 src='/congbao.nsf/cal.gif' onclick="document.forms[0].OutDate.focus(); showCalendarControl(forms[0].OutDate); document.forms[0].OutDate.focus();" style=cursor:pointer align=top border=0></td--></tr></tbody></table><font face="Tahoma">	</font>    </td>
+    <td class="formbody" align="right">đến: &nbsp;</td>
+   <td class="formbody" width="30%">
+	<table cellpadding="0" cellspacing="0" width="100%"><tbody><tr>
+	<td width="100%">
+<input name="OutDate_ToQuery" value="" onkeydown="if (window.event.keyCode == key(&quot;keyopenWindow&quot;)) {
+	document.forms[0].OutDate_To.focus();
+	showCalendarControl(forms[0].OutDate_To);
+	document.forms[0].OutDate_To.value=document.forms[0].OutDate_To;
+	document.forms[0].OutDate_To.focus();
+	autoDate('OutDate_ToQuery');
+}	
+" onchange="autoDate('OutDate_ToQuery');
+" class="date hasDatepicker" id="OutDate_ToQuery"><img class="ui-datepicker-trigger" src="/congbao.nsf/icon-calendar.gif" alt="Chọn ngày từ lịch" title="Chọn ngày từ lịch"></td>
+	<!--td><img height=22 width=22 src='/congbao.nsf/cal.gif' onclick="document.forms[0].OutDate_To.focus(); showCalendarControl(forms[0].OutDate_To); document.forms[0].OutDate_To.focus();" style=cursor:pointer align=top border=0></td--></tr></tbody></table><font face="Tahoma">	</font></td></tr>
+	<tr><td class="formlabel">CQ ban hành: </td><td class="formbody" colspan="4">
+		
+<input name="%%Surrogate_OutIssueQuery" type="hidden" value="1" id="%%Surrogate_OutIssueQuery">
+<select name="OutIssueQuery" id="OutIssue" style="width:70%">
+<option selected="" value="_c5kmi0l0k3qin88332gfa681d5k_">-- Tất cả --
+</option><option value="_u903d2ji441a187m9dpk0_">HĐND Tỉnh
+</option><option value="_l903d2ji441scc82ck9n6e82j2gfaqs0_">HĐND xã Lóng Sập
+</option><option value="_qal14sh10f3320j52dpji0kok3qmn0_">UBND xã Lóng Sập
+</option><option value="_0al14sh10aga1tibed0_">UBND Tỉnh
+</option><option value="_jal14sh10f3320gr8d4a1tgbecsg56501k5n0_">UBND xã Chiềng Sơn
+</option><option value="_g903d2ji441scc823d1kh87m1dpji0kok06gms_">HĐND xã Chiềng Sơn
+</option><option value="_lal14sh10f3320l43dog5j23e_">UBND xã Tân Yên
+</option><option value="_8903d2ji441scc82kgdn20mc8do_">HĐND xã Tân Yên
+</option><option value="_5al14sh10f3320lk3dog4g50uqc_">UBND xã Vân Hồ
+</option><option value="_a903d2ji441scc82mgdn20i0k3r9g_">HĐND xã Vân Hồ
+</option><option value="_2al14sh10f3320krfdpji0ir82gfeeo8_">UBND xã Song Khủa
+</option><option value="_m903d2ji441scc82jdtn6e82bd0a1tpr1_">HĐND xã Song Khủa
+</option><option value="_mal14sh10f3320l4j416q6o8_">UBND xã Tô Múa
+</option><option value="_4903d2ji441scc82kicg4r8r1_">HĐND xã Tô Múa
+</option><option value="_g903d2ji441scc82oem1ms82ed1gg_">HĐND xã Xuân Nha
+</option><option value="_jal14sh10f3320m3lgdn20jj8c4_">UBND xã Xuân Nha
+</option><option value="_j903d2ji441scc82heka1tsred0g4sq31d4_">HĐND xã Quỳnh Nhai
+</option><option value="_bal14sh10f3320kbl2gff6rj84176gob9_">UBND xã Quỳnh Nhai
+</option><option value="_f903d2ji441scc82d2g0r050urln6e823d1kogrg_">HĐND xã Mường Chiên
+</option><option value="_cal14sh10f3320j8k06o187mtdpji0gr8d646s_">UBND xã Mường Chiên
+</option><option value="_hal14sh10f3320j8k06o187mtdpji0hr9idn0_">UBND xã Mường Giôn
+</option><option value="_o903d2ji441scc82d2g0r050urln6e827d69ms_">HĐND xã Mường Giôn
+</option><option value="_fal14sh10f3320j8k06o187mtdpji0kok3qgmi_">UBND xã Mường Sại
+</option><option value="_3903d2ji441scc82d2g0r050urln6e82j2gfa2q8_">HĐND xã Mường Sại
+</option><option value="_aal14sh10f3320l38eka1tbbe411mh0rl_">UBND xã Thuận Châu
+</option><option value="_n903d2ji441scc82kd1qh87lddog46q43ek_">HĐND xã Thuận Châu
+</option><option value="_5903d2ji441scc823d1kh87m1dpji0j31_">HĐND xã Chiềng La
+</option><option value="_ual14sh10f3320gr8d4a1tgbecsg4oo8_">UBND xã Chiềng La
+</option><option value="_a903d2ji441scc82e2gfaqr909ga1t9rl_">HĐND xã Nậm Lầu
+</option><option value="_5al14sh10f3320jgk3qmmq82c2gfaet8_">UBND xã Nậm Lầu
+</option><option value="_9al14sh10f3320jbl2gfdaq909oa1tjb9_">UBND xã Muổi Nọi
+</option><option value="_r903d2ji441scc82deka1tlb9417187mdd4_">HĐND xã Muổi Nọi
+</option><option value="_fal14sh10f3320j8k06o187mtdpji0ir8d646spo_">UBND xã Mường Khiêng
+</option><option value="_3903d2ji441scc82d2g0r050urln6e82bd1kogrj7_">HĐND xã Mường Khiêng
+</option><option value="_mal14sh10f3320grf416h87l1_">UBND xã Co Mạ
+</option><option value="_4903d2ji441scc823dsg4q50uk4_">HĐND xã Co Mạ
+</option><option value="_4al14sh10f3320gkddpk20t38eka1tbbe_">UBND xã Bình thuận
+</option><option value="_f903d2ji441scc822hln6g82kd1qh87lddo_">HĐND xã Bình Thuận
+</option><option value="_val14sh10f3320j8k06o187mtdpji140_">UBND xã Mường É
+</option><option value="_1903d2ji441scc82d2g0r050urln6e84g_">HĐND xã Mường É
+</option><option value="_2al14sh10f3320j3fdpji0i0k3qsg_">UBND xã Long Hẹ
+</option><option value="_m903d2ji441scc82cdtn6e8282gfbi_">HĐND xã Long Hẹ
+</option><option value="_6al14sh10f3320j8k06o187mtdpji0gl0dk_">UBND xã Mường Bám
+</option><option value="_6903d2ji441scc82d2g0r050urln6e822k1mg_">HĐND xã Mường Bám
+</option><option value="_bal14sh10f3320j8k06o187mtdpji0j31_">UBND xã Mường La
+</option><option value="_j903d2ji441scc82d2g0r050urln6e82cc4_">HĐND xã Mường La
+</option><option value="_ial14sh10f3320gr8d4a1tgbecsg4oobf_">UBND xã Chiềng Lao
+</option><option value="_k903d2ji441scc823d1kh87m1dpji0j31ds_">HĐND xã Chiềng Lao
+</option><option value="_sal14sh10f3320j8k06o187mtdpji0gl3_">UBND xã Mường Bú
+</option><option value="_d903d2ji441scc82d2g0r050urln6e822kc_">HĐND xã Mường Bú
+</option><option value="_7al14sh10f3320gr8d4a1tgbecsg4grr1_">UBND xã Chiềng Hoa
+</option><option value="_2903d2ji441scc823d1kh87m1dpji0i3fc4_">HĐND xã Chiềng Hoa
+</option><option value="_lal14sh10f3320jj72gfcqop08dk6i50untn0_">UBND xã Ngọc Chiến
+</option><option value="_8903d2ji441scc82ecsa1tjb3411mgq8k3qvms_">HĐND xã Ngọc Chiến
+</option><option value="_5al14sh10f3320ggk3qnm682ph1n0_">UBND xã Bắc Yên
+</option><option value="_a903d2ji441scc8222gfauop0b646s_">HĐND xã Bắc Yên
+</option><option value="_hal14sh10f3320l4541c9eo8_">UBND xã Tà Xùa
+</option><option value="_o903d2ji441scc82kgkg5h5r1_">HĐND xã Tà Xùa
+</option><option value="_gal14sh10f3320l0k3qgi0ir8dtgg_">UBND xã Tạ Khoa
+</option><option value="_s903d2ji441scc82k2gfa282bd1nm2_">HĐND xã Tạ Khoa
+</option><option value="_sal14sh10f3320m51dkg5d1becs_">UBND xã Xím Vàng
+</option><option value="_d903d2ji441scc82ok5mi0lk5dpjg_">HĐND xã Xím Vàng
+</option><option value="_1al14sh10f3320k0k3qnm682ecu2g_">UBND xã Pắc Ngà
+</option><option value="_q903d2ji441scc82g2gfauop09pjoa_">HĐND xã Pắc Ngà
+</option><option value="_val14sh10f3320gr8d4a1tgbecsg5650uk5kg_">UBND xã Chiềng Sại
+</option><option value="_1903d2ji441scc823d1kh87m1dpji0kok3qgmi_">HĐND xã Chiềng Sại
+</option><option value="_3al14sh10f3320k38isg5j23e_">UBND xã Phù Yên
+</option><option value="_i903d2ji441scc82gd2bi0mc8do_">HĐND xã Phù Yên
+</option><option value="_cal14sh10f3320hr9c4g50q4n_">UBND xã Gia Phù
+</option><option value="_f903d2ji441scc827d5gi0k38is_">HĐND xã Gia Phù
+</option><option value="_bal14sh10f3320l0k06o187mtdpji0i0k3qgg_">UBND xã Tường Hạ
+</option><option value="_j903d2ji441scc82k2g0r050urln6e8282gfa2_">HĐND xã Tường Hạ
+</option><option value="_kal14sh10f3320j8k06o187mtdpji0gok06gmi_">UBND xã Mường Cơi
+</option><option value="_c903d2ji441scc82d2g0r050urln6e8232g0q2q8_">HĐND xã Mường Cơi
+</option><option value="_fal14sh10f3320j8k06o187mtdpji0gj1dpjg_">UBND xã Mường Bang
+</option><option value="_3903d2ji441scc82d2g0r050urln6e822c5n6e_">HĐND xã Mường Bang
+</option><option value="_8al14sh10f3320l43dog50q3fdpjg_">UBND xã Tân Phong
+</option><option value="_v903d2ji441scc82kgdn20k38dtn6e_">HĐND xã Tân Phong
+</option><option value="_sal14sh10f3320ir9dkg44rre_">UBND xã Kim Bon
+</option><option value="_d903d2ji441scc82bd5mi0gjfdo_">HĐND xã Kim Bon
+</option><option value="_nal14sh10f3320krl2gfd2q90aga1tj8_">UBND xã Suối Tọ
+</option><option value="_0903d2ji441scc82jeka1tkb941a187md_">HĐND xã Suối Tọ
+</option><option value="_9al14sh10f3320mc8dog46q43ek_">UBND xã Yên Châu
+</option><option value="_r903d2ji441scc82ph1n20gr8gdqg_">HĐND xã Yên Châu
+</option><option value="_nal14sh10f3320gr8d4a1tgbecsg4g50umthg_">UBND xã Chiềng Hặc
+</option><option value="_0903d2ji441scc823d1kh87m1dpji0i0k3qrm6_">HĐND xã Chiềng Hặc
+</option><option value="_hal14sh10f3320j52dpji0k38d646spo_">UBND xã Lóng Phiêng
+</option><option value="_o903d2ji441scc82ck9n6e82gd1kogrj7_">HĐND xã Lóng Phiêng
+</option><option value="_dal14sh10f3320mc8dog56501k5n0_">UBND xã Yên Sơn
+</option><option value="_b903d2ji441scc82ph1n20kok06gms_">HĐND xã Yên Sơn
+</option><option value="_ral14sh10f3320k38d646spp09dk6v1b9_">UBND xã Phiêng Khoài
+</option><option value="_h903d2ji441scc82gd1kogrj7415mgrs5d4_">HĐND xã Phiêng Khoài
+</option><option value="_mal14sh10f3320gr8d4a1tgbecsg4qob9_">UBND xã Chiềng Mai
+</option><option value="_4903d2ji441scc823d1kh87m1dpji0jb1d4_">HĐND xã Chiềng Mai
+</option><option value="_qal14sh10f3320jb1d4g56501k5n0_">UBND xã Mai Sơn
+</option><option value="_l903d2ji441scc82dc5ki0kok06gms_">HĐND xã Mai Sơn
+</option><option value="_4al14sh10f3320k38d646spp0a0a1tcbe_">UBND xã Phiêng Pằn
+</option><option value="_e903d2ji441scc82gd1kogrj7418187lhdo_">HĐND xã Phiêng Pằn
+</option><option value="_4al14sh10f3320gr8d4a1tgbecsg4qtbecs_">UBND xã Chiềng Mung
+</option><option value="_e903d2ji441scc823d1kh87m1dpji0jbldpjg_">HĐND xã Chiềng Mung
+</option><option value="_9al14sh10f3320k38d646spp08ca1tcbd_">UBND xã Phiêng Cằm
+</option><option value="_r903d2ji441scc82gd1kogrj7411h87lhdk_">HĐND xã Phiêng Cằm
+</option><option value="_hal14sh10f3320j8k06o187mtdpji0gr8c5n6g_">UBND xã Mường Chanh
+</option><option value="_o903d2ji441scc82d2g0r050urln6e823d1gmsq0_">HĐND xã Mường Chanh
+</option><option value="_fal14sh10f3320l45414187mpcc_">UBND xã Tà Hộc
+</option><option value="_3903d2ji441scc82kgkg4g50ur5hg_">HĐND xã Tà Hộc
+</option><option value="_pal14sh10f3320gr8d4a1tgbecsg56tbecs_">UBND xã Chiềng Sung
+</option><option value="_p903d2ji441scc823d1kh87m1dpji0krldpjg_">HĐND xã Chiềng Sung
+</option><option value="_kal14sh10f3320gl2419mirj8_">UBND xã Bó Sinh
+</option><option value="_c903d2ji441scc822k8g56qbed0_">HĐND xã Bó Sinh
+</option><option value="_2al14sh10f3320gr8d4a1tgbecsg4mq0k06o180d1dpjg_">UBND xã Chiềng Khương
+</option><option value="_m903d2ji441scc823d1kh87m1dpji0ir82g0r0501k5n6e_">HĐND xã Chiềng Khương
+</option><option value="_9al14sh10f3320j8k06o187mtdpji0i3ldpjg_">UBND xã Mường Hung
+</option><option value="_r903d2ji441scc82d2g0r050urln6e828eln6e_">HĐND xã Mường Hung
+</option><option value="_pal14sh10f3320gr8d4a1tgbecsg4mq3fdtn6e_">UBND xã Chiềng Khoong
+</option><option value="_p903d2ji441scc823d1kh87m1dpji0ir8dtnmspo_">HĐND xã Chiềng Khoong
+</option><option value="_ral14sh10f3320j8k06o187mtdpji0j0k3qjmq_">UBND xã Mường Lầm
+</option><option value="_h903d2ji441scc82d2g0r050urln6e82c2gfaer8_">HĐND xã Mường Lầm
+</option><option value="_qal14sh10f3320jgk3qmmq82kf4_">UBND xã Nậm Ty
+</option><option value="_l903d2ji441scc82e2gfaqr90ahsg_">HĐND xã Nậm Ty
+</option><option value="_eal14sh10f3320ksjdpji0je6_">UBND xã Sông Mã
+</option><option value="_7903d2ji441scc82jidn6e82doo_">HĐND xã Sông Mã
+</option><option value="_kal14sh10f3320i3l2gfdaq909ka1tmbk_">UBND xã Huổi Một
+</option><option value="_c903d2ji441scc828eka1tlb9416h87mpeg_">HĐND xã Huổi Một
+</option><option value="_5al14sh10f3320gr8d4a1tgbecsg56501k4_">UBND xã Chiềng Sơ
+</option><option value="_a903d2ji441scc823d1kh87m1dpji0kok06gg_">HĐND xã Chiềng Sơ
+</option><option value="_jal14sh10f3320kok3r8n08232gfdis0_">UBND xã Sốp Cộp
+</option><option value="_g903d2ji441scc82j2gfd2s108ca1tmbg_">HĐND xã Sốp Cộp
+</option><option value="_pal14sh10f3320k53dpji0gl0dpk0_">UBND xã Púng Bánh
+</option><option value="_p903d2ji441scc82gkdn6e822k1n6g_">HĐND xã Púng Bánh
+</option><option value="_ual14sh10f3320j8k06o187mtdpji0j0k3qgms_">UBND xã Mường Lạn
+</option><option value="_5903d2ji441scc82d2g0r050urln6e82c2gfa2rg_">HĐND xã Mường Lạn
+</option><option value="_mal14sh10f3320j8k06o187mtdpji0j4ads_">UBND xã Mường Lèo
+</option><option value="_4903d2ji441scc82d2g0r050urln6e82ch9ng_">HĐND xã Mường Lèo
+</option><option value="_ual14sh10e1k180dg2gfdqrj741a96828d4a1thrl_">UBND phường Tô Hiệu
+</option><option value="_5903d2ji441o6g501m0a1tnbecsg594p091kh87m7ek_">HĐND phường Tô Hiệu
+</option><option value="_gal14sh10e1k180dg2gfdqrj7411mgq8k3r0mspp085n0_">UBND phường Chiềng An
+</option><option value="_s903d2ji441o6g501m0a1tnbecsg46q392gfc2rj7410ms_">HĐND phường Chiềng An
+</option><option value="_dal14sh10e1k180dg2gfdqrj7411mgq8k3r0mspp08ca038b9_">UBND phường Chiềng Cơi
+</option><option value="_b903d2ji441o6g501m0a1tnbecsg46q392gfc2rj7411h80d1d4_">HĐND phường Chiềng Cơi
+</option><option value="_9al14sh10e1k180dg2gfdqrj7411mgq8k3r0mspp0adkmsq0_">UBND phường Chiềng Sinh
+</option><option value="_r903d2ji441o6g501m0a1tnbecsg46q392gfc2rj7419mirj8_">HĐND phường Chiềng Sinh
+</option><option value="_ral14sh10e1k180dg2gfdqrj7416h87mpccg46q43ek_">UBND phường Mộc Châu
+</option><option value="_h903d2ji441o6g501m0a1tnbecsg4q50ur5hi0gr8gdqg_">HĐND phường Mộc Châu
+</option><option value="_val14sh10e1k180dg2gfdqrj7416h87mpccg56501k5n0_">UBND phường Mộc Sơn
+</option><option value="_1903d2ji441o6g501m0a1tnbecsg4q50ur5hi0kok06gms_">HĐND phường Mộc Sơn
+</option><option value="_kal14sh10e1k180dg2gfdqrj741b86rh0aca038be_">UBND phường Vân Sơn
+</option><option value="_c903d2ji441o6g501m0a1tnbecsg5d0re419h80d1do_">HĐND phường Vân Sơn
+</option><option value="_1al14sh10e1k180dg2gfdqrj741a6g50ukdni0jj7elsogrg_">UBND phường Thảo Nguyên
+</option><option value="_q903d2ji441o6g501m0a1tnbecsg58q0k3qhmu82ectqnj23e_">HĐND phường Thảo Nguyên
+</option><option value="_ial14sh10f33201mhdu2ms82b2gfbut0_">UBND xã Đoàn Kết
+</option><option value="_k903d2ji441scc806q5noarh09ca1tfrk_">HĐND xã Đoàn Kết
+</option><option value="_cal14sh10f3320gkddpk20l38eka1tbbe_">UBND xã Bình Thuận
+</option><option value="_cal14sh10f3320gkddpk20l38eka1tbbe_">UBND xã Bình Thuận
+</option><option value="_bal14sh10f3320j8k06o187mtdpji0j31_">UBND xã Mường La
+</option><option value="_bal14sh10f3320j8k06o187mtdpji0j31_">UBND xã Mường La
+</option><option value="_kahp7arj741q86r908e9mspp0cag6u83k2gfcirj8_">Trung tâm Công báo tỉnh
+</option><option value="_qao3cerh0e1k9arj741ak4ji441q187m9dpk0_">Văn phòng UBND tỉnh
+</option><option value="_p903d2ji441scc_">HĐND xã
+</option><option value="_pal14sh10f330_">UBND xã
+</option><option value="_j903d2ji441scc82heka1tsred0g4sq31d4_">HĐND xã Quỳnh Nhai</option></select>
+
+	</td></tr>
+	<tr><td class="formlabel">Loại văn bản: </td><td class="formbody" colspan="4">
+		
+<input name="%%Surrogate_OutTypeQuery" type="hidden" value="1" id="%%Surrogate_OutTypeQuery">
+<select name="OutTypeQuery" id="OutTypeQuery">
+<option selected="" value="_c5kmi0l0k3qin88332gfa681d5k_">-- Tất cả --
+</option><option value="_m8dk187m941q6g50upcg6650ustgi0gr82gfee83k2gfcmor841ak4ji441q187m9dpk0_">Chỉ thị của Chủ tịch UBND tỉnh
+</option><option value="_18dk187m941q6g50upcg6650ustgi0gr82gfee83k2gfcmor841ak4ji441scc_">Chỉ thị của Chủ tịch UBND xã
+</option><option value="_78dk187m941q6g50upcg6650ustgi0la29p220t0k3r4msq0_">Chỉ thị của UBND tỉnh
+</option><option value="_p8e9mspp0eo3cerg_">Công văn
+</option><option value="_d9pjmg50upcg72tbp2gfbut10cca1tpr14140dkae8gg7850up5n6g_">Nghị quyết của HĐND tỉnh
+</option><option value="_s9pjmg50upcg72tbp2gfbut10903d2ji441scc_">Nghị quyết HĐND xã
+</option><option value="_la5qni50untq201mg2gfcmrj841hh87n7c4g46q0k3rji0t0k3r5m6q10al14sh10ega1tibed0_">Quyết định của Chủ tịch UBND tỉnh
+</option><option value="_8a5qni50untq201mg2gfcmrj841hh87n7c4g46q0k3rji0t0k3r5m6q10al14sh10f330_">Quyết định của Chủ tịch UBND xã
+</option><option value="_pa5qni50untq201mg2gfcmrj841hh87n7c4g5agie8gg7850up5n6g_">Quyết định của UBND tỉnh
+</option><option value="_7a5qni50untq201mg2gfcmrj841hh87n7c4g5agie8gg7hhg_">Quyết định của UBND xã
+</option><option value="_sa5qni50untq201mg2gfcmrj8403d18bed0g66q51dpk0_">Quyết định đính chính</option></select>
+
+	</td></tr>
+	<tr><td class="formlabel">Lĩnh vực: </td><td class="formbody" colspan="4">
+		
+<input name="%%Surrogate_OutAreaQuery" type="hidden" value="1" id="%%Surrogate_OutAreaQuery">
+<select name="OutAreaQuery" id="OutArea">
+<option selected="" value="_c5kmi0l0k3qin88332gfa681d5k_">-- Tất cả --
+</option><option value="_q8eg6683c0o9msq10eoa1tsb341lmh833_">Các lĩnh vực khác
+</option><option value="_t8eg6683m2gfaarh00r8187m141scc8382gfdiq90_">Các vấn đề xã hội
+</option><option value="_t8ca1t8r941hq0or841k8arj841hmh8bed0g0_">Cải cách hành chính
+</option><option value="_29dk6uo90d0a1tjb341hp6rj741n6eq0k3r3g_">Khoa học công nghệ
+</option><option value="_29dkmsq10ega1tfp05kg591b941hmh8bed0_">Kinh tế - Tài chính
+</option><option value="_19hgmu806q0a1tmbecs_">Lao động
+</option><option value="_ca1ka0s10cdk187lv5kg42rh0dpkmsq1dahp187ldegg7850uu4g0_">Pháp chế- An ninh-Trật tự
+</option><option value="_da5qni838dsa1t8b3d0g2q806q29i0t382gfcm_">Quy hoạch - đô thị
+</option><option value="_ta5qh87l3dog6pr10dpk8a83e2g0r050urdhi0_">Quản lý nhà nước
+</option><option value="_qa5qh87l3dog6pr100r89683kd0a1tip05kg5gh2388g0_">Quản lý đô thị - XDCB
+</option><option value="_iai2mi83ectqnj23e5l6p6q90ehp180dg2gfdqrj740_">Tài nguyên-Môi trường
+</option><option value="_9ahk96rj741q6irh05kg58sjlf4a1tgbe41q6h4recsg0_">Thông tin - Truyền thông
+</option><option value="_1ahk7a50uusg7650ukdn20rkjdpji0r43dkg0_">Thuỷ sản nông lâm
+</option><option value="_eahk180dg2g0q2rj741mh87l1d4g2q824ekg6o50updhmg81d4125c_">Thương mại - Du lịch - DV
+</option><option value="_gaga1tl90cdk187n9ccg6783e41h187mp40_">Tổ chức cán bộ
+</option><option value="_naga1tl90cdk187n9ccg66q51dpk20sblf4a1tgbe40_">Tổ chức chính quyền
+</option><option value="_qaga1tlbecsg6g50usdo20_">Tổng hợp
+</option><option value="_uao3cerh0d1nq081d413mj83f41i187n5ccmli83k2gfbu80_">Văn hoá - Giáo dục-Y tế</option></select>
+
+	</td></tr>
+	<tr><td class="formlabel">Trích yếu: </td><td class="formbody" colspan="4">
+		
+<textarea name="TrichYeuQuery" id="TrichYeu" style="width: 70%; height: 70px;" rows="7" cols="50"></textarea>
+
+	</td></tr>
+	<tr><td class="toolbar" colspan="4" align="center"><a class="btn-findicons" id="search-advance"><span>Tìm kiếm</span></a></td></tr>
+	<tr><td colspan="4" align="right">
+		<div id="pagerTop"> </div>
+	</td></tr>
+	<tr><td class="emptycell" height="100%" colspan="4">
+	</td></tr>
+</tbody></table>
+	</div><font face="Tahoma"> </font>
+<input type="button" value="Tìm kiếm" id="AdvanceSearch" class="tdButton hidden" onclick="return _doClick('47258A5000222119.d6a8ff41d2d0d07d47258012000a7af2/$Body/0.227E', this, null)"><font face="Tahoma"> </font><div class="divData divDataSearch" style="display: none;">
+	<div>Tìm thấy: <span id="total" style="color: #ff0033; font-weight: bold">0</span> văn bản</div>
+		<table>
+			<thead>
+				<tr><th>STT</th>
+				<th>Số, ký hiệu</th>
+				<th>Ngày ban hành</th>
+				<th>CQ ban hành</th>
+				<th>Tóm tắt nội dung</th>
+			</tr></thead>
+			<tbody>
+
+			</tbody>
+		</table>
+	<div class="simple-pagination compact-theme" style="display: none;"><ul><li class="active"><span class="current prev">◄</span></li><li class="active"><span class="current">1</span></li><li class="active"><span class="current next">►</span></li></ul></div>
+</div><!--end divData-->
+
+<input name="SearchOption" value="aaa" type="hidden" id="SearchOption">
+<input type="hidden" id="search-option" value="fulltext">
+<input type="hidden" id="PageMax" value="">
+<div style="display:none">
+<input name="Page" value="1" id="Page" style="display:none"></div>
+</div><div class="caption documents-list-head" style="height: 22px; margin-top: 10px">Danh mục văn bản đăng công báo</div>
+<div class="documents-list-body"><a class="gazette-no gazettes-list" attrrestrict="Danh%20m%E1%BB%A5c%20v%C4%83n%20b%E1%BA%A3n%20%C4%91%C4%83ng%20c%C3%B4ng%20b%C3%A1o%20ng%C3%A0y%2025%20th%C3%A1ng%2007%20n%C4%83m%202026">Danh mục văn bản đăng công báo ngày 25 tháng 07 năm 2026</a><a class="gazette-no gazettes-list" attrrestrict="Danh%20m%E1%BB%A5c%20v%C4%83n%20b%E1%BA%A3n%20%C4%91%C4%83ng%20c%C3%B4ng%20b%C3%A1o%20ng%C3%A0y%2010%20th%C3%A1ng%2007%20n%C4%83m%202026">Danh mục văn bản đăng công báo ngày 10 tháng 07 năm 2026</a></div>			</td>
+		</tr>
+	</tbody></table>
+	<div class="cb-div-footer" style="line-height: 20px">
+<p align="center"></p><span style="margin: 0px 0px 0px 40px; border: none; padding: 0px; font-size: 12px;"><p style="text-align: center; margin: 0px 0px 0px 40px; border: none; padding: 0px; font-size: 12px;"><b style="text-align: center; margin: 0px 0px 0px 40px; border: none; padding: 0px; font-size: 12px;">Bản quyền thuộc: Văn phòng UBND tỉnh Sơn La</b></p></span><a href="https://tinnhiemmang.vn/danh-ba-tin-nhiem/congbaosonlagovvn-1623988215" title="Chung nhan Tin Nhiem Mang" target="_blank"><img src="https://tinnhiemmang.vn/handle_cert?id=congbao.sonla.gov.vn" width="150px" height="auto" alt="Chung nhan Tin Nhiem Mang" style="position: absolute;    right: 180px;"></a><span style="color: rgb(255, 0, 0); font-size: 12px;"><span style="color: rgb(0, 0, 0); font-size: 12px;"><p style="color: rgb(0, 0, 0); font-size: 12px;" align="center"><b style="color: rgb(0, 0, 0); font-size: 12px;"><i style="color: rgb(0, 0, 0); font-size: 12px;">                         Địa chỉ:&nbsp;</i></b><i style="color: rgb(0, 0, 0); font-size: 12px;"><b style="color: rgb(0, 0, 0); font-size: 12px;">Trung tâm Thông tin - Văn phòng UBND tỉnh Sơn La; </b></i></p></span><b style="color: rgb(0, 0, 0); font-size: 12px;"><span style="color: rgb(0, 0, 0); font-size: 12px;"><p style="color: rgb(0, 0, 0); font-size: 12px;" align="center"><i style="color: rgb(0, 0, 0); font-size: 12px;"><b style="color: rgb(0, 0, 0); font-size: 12px;">Trung tâm hành chính tỉnh, phường Chiềng Cơi, thành phố Sơn La, tỉnh Sơn La</b></i></p></span><span style="color:rgb(0,0,0);undefined"><p style="color: rgb(0, 0, 0);" align="center"></p></span><span style="color:rgb(0,0,0);undefined"><p style="color: rgb(0, 0, 0);" align="center">Điện thoại: 0212.3751.595 - 0212.3751.091. E-mail: <a target="_blank" href="mailto:congbaosonla@gmail.com.prx.us.teleport.to.prx.us.teleport.to.prx.us.teleport.to" style="color: rgb(0, 0, 0);">congbaosonla@gmail.com</a><br style="color: rgb(0, 0, 0);"></p><p align="center" style="color: rgb(0, 0, 0);"> Ghi rõ nguồn "<b style="color: rgb(0, 0, 0);">Công báo tỉnh Sơn La</b>" khi sử dụng lại thông tin từ Website này.</p></span></b></span>
+	</div>
+</div></form><script async="" type="text/javascript" src="https://s4.histats.com/stats/3527224.php?3527224&amp;@f16&amp;@g1&amp;@h1&amp;@i1&amp;@j1785808980921&amp;@k0&amp;@l1&amp;@mDanh%20m%E1%BB%A5c%20v%C4%83n%20b%E1%BA%A3n%20%C4%91%C4%83ng%20c%C3%B4ng%20b%C3%A1o&amp;@n0&amp;@o1000&amp;@q0&amp;@r0&amp;@s406&amp;@ten-US&amp;@u1366&amp;@b1:155918720&amp;@b3:1785808981&amp;@b4:js15_as.js&amp;@b5:420&amp;@a-_0.2.1&amp;@vhttps%3A%2F%2Fcongbao.sonla.gov.vn%2Fcongbao.nsf%2FDanhMucVB&amp;@w"></script>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div><script async="" type="text/javascript" src="https://s10.histats.com/counters/cc_406.js"></script><iframe src="https://t.dtscout.com/idg/?su=4C301785808982D83277AA169F50E50D" width="0" height="0" style="display: none;"></iframe><script src="https://p.mrktmtrcs.net/mm.js" async=""></script><script async="" src="https://tags.crwdcntrl.net/lt/c/3825/lt.min.js"></script><script async="" src="https://t.dtscdn.com/widget/?d=4C301785808982D83277AA169F50E50D&amp;nid=300&amp;p=2114454483&amp;t=-420&amp;s=1366x768x24&amp;u=https%3A%2F%2Fcongbao.sonla.gov.vn%2Fcongbao.nsf%2FDanhMucVB&amp;r="></script></body></html>
