@@ -137,16 +137,26 @@ LISTING_ROW_EXTRACT_JS = """
 
 PROPERTIES_EXTRACT_JS = """
 () => {
+    function norm(s) {
+        return (s || '').replace(/\\s+/g, ' ').trim().replace(/:$/, '');
+    }
     const data = {};
-    const table = document.querySelector('table.tbl-attributes');
-    if (!table) return data;
-    table.querySelectorAll('tr').forEach(tr => {
-        const ths = tr.querySelectorAll('th');
-        const tds = tr.querySelectorAll('td');
+    // QUÉT TOÀN TRANG (không chỉ trong table.tbl-attributes) vì 1 số field
+    // như "Công báo" / "Trang" có thể nằm ở bảng con/khác selector.
+    // Dùng ':scope > th' và ':scope > td' để chỉ lấy CON TRỰC TIẾP của tr,
+    // tránh trường hợp có bảng lồng bên trong 1 ô làm lệch index th<->td.
+    document.querySelectorAll('tr').forEach(tr => {
+        const ths = tr.querySelectorAll(':scope > th');
+        const tds = tr.querySelectorAll(':scope > td');
         for (let i = 0; i < ths.length; i++) {
-            const label = ths[i].textContent.trim();
-            const value = tds[i] ? tds[i].textContent.trim() : '';
-            data[label] = value;
+            const label = norm(ths[i].textContent);
+            if (!label) continue;
+            const value = tds[i] ? norm(tds[i].textContent) : '';
+            // Không ghi đè nếu đã có giá trị (ưu tiên lần gặp đầu tiên,
+            // phòng trường hợp nhãn trùng tên xuất hiện ở chỗ khác trang)
+            if (!(label in data) || !data[label]) {
+                data[label] = value;
+            }
         }
     });
     return data;
@@ -212,24 +222,77 @@ class CongBaoCrawler:
             logger.warning("Không thấy bảng thuộc tính cho %s", parent_unid)
             return {}
         raw = page.evaluate(PROPERTIES_EXTRACT_JS)
+        logger.debug("Raw properties (%s): %s", parent_unid, raw)
 
         mapped = {}
         for vn_label, db_col in config.PROPERTIES_FIELD_MAP.items():
             mapped[db_col] = raw.get(vn_label, "") or None
+
+        # Fallback: nếu vẫn thiếu Công báo/Trang (site có thể render 2 field
+        # này ngoài cấu trúc th/td chuẩn), dò trực tiếp trong text toàn trang.
+        if not mapped.get("so_cong_bao") or not mapped.get("trang_cong_bao"):
+            body_text = page.inner_text("body")
+            if not mapped.get("so_cong_bao"):
+                m = re.search(
+                    r"Công báo[^\S\r\n]*\n?[^\S\r\n]*(Số\s*\d+[^\n]*?Ngày\s*[\d/]+)",
+                    body_text,
+                )
+                if m:
+                    mapped["so_cong_bao"] = m.group(1).strip()
+                    logger.info("Đã lấy Công báo qua fallback regex cho %s", parent_unid)
+            if not mapped.get("trang_cong_bao"):
+                m = re.search(r"\bTrang\b[^\S\r\n]*\n?[^\S\r\n]*(\d+)", body_text)
+                if m:
+                    mapped["trang_cong_bao"] = m.group(1).strip()
+                    logger.info("Đã lấy Trang qua fallback regex cho %s", parent_unid)
+            if not mapped.get("so_cong_bao") or not mapped.get("trang_cong_bao"):
+                logger.warning(
+                    "Vẫn KHÔNG lấy được so_cong_bao/trang_cong_bao cho %s dù đã "
+                    "fallback. Cần inspect lại HTML thật của trang này "
+                    "(xem hướng dẫn debug trong verify.py).",
+                    parent_unid,
+                )
         return mapped
 
     def download_attachments(self, page, parent_unid: str, file_hrefs: list[str],
-                              so_hieu: str) -> list[str]:
-        local_paths = []
+                              so_hieu: str, doc_date=None) -> list[dict]:
+        """Tải file đính kèm, lưu vào downloads/<năm>/<tháng>/<file>.
+
+        Trả về list dict {file_index, file_url, file_local_path,
+        downloaded_at} - LUÔN có 1 phần tử cho mỗi href trong file_hrefs,
+        kể cả khi tải lỗi (file_local_path=None) để không lệch index giữa
+        url và local_path như cách lưu chuỗi ";" cũ.
+
+        doc_date: đối tượng date() dùng để xác định năm/tháng lưu file
+        (ưu tiên ngày ban hành). Nếu không có (None), lưu vào thư mục
+        'khong_xac_dinh' để không làm rơi mất file, đồng thời log cảnh báo.
+        """
+        if doc_date is not None:
+            year_dir = f"{doc_date.year:04d}"
+            month_dir = f"{doc_date.month:02d}"
+        else:
+            year_dir = "khong_xac_dinh"
+            month_dir = "khong_xac_dinh"
+            logger.warning(
+                "Không xác định được ngày ban hành cho %s (%s) -> lưu file "
+                "vào downloads/khong_xac_dinh/", so_hieu, parent_unid,
+            )
+        out_dir = os.path.join(config.DOWNLOADS_DIR, year_dir, month_dir)
+        os.makedirs(out_dir, exist_ok=True)
+
+        results = []
         safe_base = re.sub(r"[^\w\-.]", "_", so_hieu)
         for i, href in enumerate(file_hrefs):
             full_url = urljoin(f"{config.BASE_URL}/congbao.nsf/", href)
             ext = os.path.splitext(href.split("?")[0])[1] or ".bin"
             suffix = f"_{i}" if i > 0 else ""
-            dest_path = os.path.join(config.DOWNLOADS_DIR, f"{safe_base}{suffix}{ext}")
+            dest_path = os.path.join(out_dir, f"{safe_base}{suffix}{ext}")
 
             if os.path.exists(dest_path):
-                local_paths.append(dest_path)
+                results.append({
+                    "file_index": i, "file_url": full_url,
+                    "file_local_path": dest_path, "downloaded_at": datetime.now(),
+                })
                 continue
 
             def _download():
@@ -250,11 +313,20 @@ class CongBaoCrawler:
 
             try:
                 with_retry(_download, what=f"tải file {full_url}")
-                local_paths.append(dest_path)
                 logger.info("Đã tải file: %s", dest_path)
+                results.append({
+                    "file_index": i, "file_url": full_url,
+                    "file_local_path": dest_path, "downloaded_at": datetime.now(),
+                })
             except Exception:
                 logger.error("Không tải được file: %s", full_url)
-        return local_paths
+                # Vẫn ghi nhận URL (để biết văn bản này có file, dù chưa
+                # tải được), local_path=None -- có thể chạy lại sau để vá.
+                results.append({
+                    "file_index": i, "file_url": full_url,
+                    "file_local_path": None, "downloaded_at": None,
+                })
+        return results
 
     def run(self):
         with sync_playwright() as pw:
@@ -286,22 +358,45 @@ class CongBaoCrawler:
                         human_delay()
                         props = self.extract_properties(page, parent_unid)
 
-                        local_paths = []
-                        if config.DOWNLOAD_ATTACHMENTS and row["fileLinks"]:
-                            human_delay()
-                            local_paths = self.download_attachments(
-                                page, parent_unid, row["fileLinks"], so_hieu
-                            )
+                        # Tính ngày TRƯỚC khi tải file, để dùng làm thư mục năm/tháng
+                        ngay_ban_hanh = parse_vn_date(
+                            props.get("ngay_ban_hanh") or row["ngayBanHanh"]
+                        )
+                        ngay_hieu_luc = parse_vn_date(
+                            props.get("ngay_hieu_luc") or row["ngayHieuLuc"]
+                        )
+                        # Ưu tiên ngày ban hành để phân thư mục; nếu thiếu thì
+                        # dùng tạm ngày hiệu lực, cuối cùng mới chịu là None.
+                        doc_date = ngay_ban_hanh or ngay_hieu_luc
+
+                        file_records = []
+                        if row["fileLinks"]:
+                            if config.DOWNLOAD_ATTACHMENTS:
+                                human_delay()
+                                file_records = self.download_attachments(
+                                    page, parent_unid, row["fileLinks"], so_hieu,
+                                    doc_date=doc_date,
+                                )
+                            else:
+                                # Không tải file nhưng vẫn ghi nhận có bao
+                                # nhiêu file / URL gốc vào van_ban_file.
+                                file_records = [
+                                    {
+                                        "file_index": i,
+                                        "file_url": urljoin(
+                                            f"{config.BASE_URL}/congbao.nsf/", h
+                                        ),
+                                        "file_local_path": None,
+                                        "downloaded_at": None,
+                                    }
+                                    for i, h in enumerate(row["fileLinks"])
+                                ]
 
                         record = {
                             "so_hieu": props.get("so_hieu") or so_hieu,
                             "parent_unid": parent_unid,
-                            "ngay_ban_hanh": parse_vn_date(
-                                props.get("ngay_ban_hanh") or row["ngayBanHanh"]
-                            ),
-                            "ngay_hieu_luc": parse_vn_date(
-                                props.get("ngay_hieu_luc") or row["ngayHieuLuc"]
-                            ),
+                            "ngay_ban_hanh": ngay_ban_hanh,
+                            "ngay_hieu_luc": ngay_hieu_luc,
                             "ngay_het_hieu_luc": parse_vn_date(props.get("ngay_het_hieu_luc")),
                             "co_quan_ban_hanh": props.get("co_quan_ban_hanh"),
                             "loai_van_ban": props.get("loai_van_ban"),
@@ -311,15 +406,11 @@ class CongBaoCrawler:
                             "tinh_trang": props.get("tinh_trang") or row["tinhTrang"],
                             "so_cong_bao": props.get("so_cong_bao"),
                             "trang_cong_bao": props.get("trang_cong_bao"),
-                            "file_urls": ";".join(
-                                urljoin(f"{config.BASE_URL}/congbao.nsf/", h)
-                                for h in row["fileLinks"]
-                            ) or None,
-                            "file_local_paths": ";".join(local_paths) or None,
                             "source_url": config.DETAIL_URL_TEMPLATE.format(unid=parent_unid),
                             "crawled_at": datetime.now(),
                         }
                         self.db.upsert_van_ban(record)
+                        self.db.upsert_van_ban_files(parent_unid, file_records)
                         ok_count += 1
                     except Exception:
                         logger.exception("Lỗi xử lý văn bản %s (%s)", so_hieu, parent_unid)

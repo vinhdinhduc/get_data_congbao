@@ -65,6 +65,26 @@ def verify():
             print(f"  ngay_ban_hanh -> {parse_vn_date(props_raw.get('Ngày ban hành'))}")
             print(f"  ngay_hieu_luc -> {parse_vn_date(props_raw.get('Ngày hiệu lực'))}")
 
+            # --- DEBUG riêng cho Công báo / Trang ---
+            # Nếu 2 giá trị này vẫn None/rỗng sau khi map, in ra outerHTML
+            # của TẤT CẢ <tr> có chứa chữ "Công báo" để tự soi cấu trúc thật
+            # (có thể site đặt field này trong bảng khác / thẻ khác th-td).
+            if not props_raw.get("Công báo") or not props_raw.get("Trang"):
+                print("\n!!! Công báo / Trang chưa lấy được qua bảng chuẩn. "
+                      "Dump outerHTML các <tr> chứa 'Công báo' để đối chiếu:")
+                debug_rows = page.eval_on_selector_all(
+                    "tr",
+                    """els => els
+                        .filter(tr => tr.textContent.includes('Công báo'))
+                        .map(tr => tr.outerHTML)"""
+                )
+                for i, html in enumerate(debug_rows):
+                    print(f"\n--- tr[{i}] chứa 'Công báo' ---\n{html}\n")
+                if not debug_rows:
+                    print("  (Không tìm thấy <tr> nào chứa chữ 'Công báo' trên trang này -- "
+                          "field này có thể nằm ngoài <table>, ví dụ trong <div>/<span>. "
+                          "Hãy tự bấm F12 và tìm 'Công báo' trong Elements panel.)")
+
         print("\nNhấn Enter để đóng trình duyệt...")
         input()
         context.close()
